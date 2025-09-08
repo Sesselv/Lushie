@@ -1,0 +1,109 @@
+.sec-hero {
+    padding: 0rem;
+    background: var(--soft-purple);
+    max-width: 100%;
+    width: 100%;
+    gap: 0rem;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 4rem 0rem;
+
+        .col-1 {
+            display: flex;
+            flex-direction: column;
+            max-width: 50%;
+            width: 100%;
+            gap: 2rem;
+
+            h1 {
+                font-size: 2.5rem;
+                max-width: 32.5rem;
+                line-height: 1.4;
+
+                span {
+                    display: inline-block;
+                    position: relative;
+                    z-index: 1;
+
+                    // &::after {
+                    //     content: "";
+                    //     position: absolute;
+                    //     left: 0;
+                    //     bottom: 0.4rem;
+                    //     width: 100%;
+                    //     height: 1.1em;
+                    //     background-color: var(--white);
+                    //     z-index: -1;
+                    // }
+                }
+            }
+
+            .hero-list {
+                padding: 0rem;
+                .hero-item {
+                    list-style: none;
+                    padding: 0.5rem;
+                }
+            }
+        }
+
+        .col-2 {
+            max-width: 50%;
+            width: 100%;
+            .soaps-img {
+                max-width: 50rem;
+                width: 100%;
+                max-height: auto;
+                rotate: 15deg;
+            }
+        }
+    }
+    .animated-bar {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        background: var(--black);
+        color: var(--white);
+        padding: 1.5rem 0;
+        position: relative;
+
+        .animated-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 15s linear infinite;
+            will-change: transform;
+        }
+
+        span {
+            display: inline-block;
+            margin: 0 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            color: var(--white);
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: -1rem;
+                width: 0.0625rem;
+                height: 100%;
+                background: var(--white);
+            }
+        }
+    }
+
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+}

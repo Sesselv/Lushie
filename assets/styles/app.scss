@@ -1,0 +1,16 @@
+@use "global/variables";
+@use "components/components";
+@use "components/buttons";
+@use "layouts/home_sections/main";
+@use "layouts/home_sections/header";
+@use "layouts/home_sections/hero";
+@use "layouts/home_sections/features";
+@use "layouts/home_sections/soaps";
+@use "layouts/home_sections/exchange";
+@use "layouts/home_sections/shop";
+@use "layouts/home_sections/footer";
+
+//////////////////////////
+
+@use "layouts/register_sections/register";
+@use "layouts/register_sections/login";

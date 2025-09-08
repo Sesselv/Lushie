@@ -1,0 +1,73 @@
+.sec-features {
+    .container {
+        display: flex;
+        gap: 10rem;
+
+        h1 {
+            max-width: 50rem;
+            text-align: center;
+
+            span {
+                display: inline-block;
+                position: relative;
+                z-index: 1;
+                // &::after {
+                //     content: "";
+                //     position: absolute;
+                //     top: 0.3125rem;
+                //     z-index: -1;
+                //     right: 0;
+                //     width: 20rem;
+                //     height: 80%;
+                //     background: var(--sunny-cream);
+                // }
+            }
+        }
+
+        .features-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 5rem;
+
+            .feature-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                gap: 1rem;
+                width: 20rem;
+                border-radius: 1rem;
+                padding: 2rem;
+                box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.15),
+                    0 1.5px 4px 0 rgba(0, 0, 0, 0.1);
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+
+                .feature-icon {
+                    display: flex;
+                    justify-content: center;
+                    font-size: 3rem;
+                    background-color: var(--white);
+                    max-width: 5rem;
+                    border-radius: 50%;
+                    border: 1px solid var(--black);
+                }
+
+                .feature-content {
+                    display: none;
+                }
+
+                &.comparator {
+                    background-color: var(--soft-purple);
+                }
+                &.soaps {
+                    background-color: var(--sky-mist);
+                }
+                &.exchange {
+                    background-color: var(--blush-breeze);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.soap-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        background: var(--white);
+        max-width: 21rem;
+        height: fit-content;
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid var(--black);
+
+        h3 {
+            padding-top: 2rem;
+        }
+    }
+}

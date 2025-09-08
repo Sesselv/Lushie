@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<section class="sec-hero">
+  <div class="container">
+    <div class="col-1">
+    <h1>Bienvenue sur Lushie !
+    Un univers doux et coloré
+    autour des savons.✨</h1>
+     <ul class="hero-list">
+       <li class="hero-item">🧼 Des savons adaptés à chaque peau</li>
+       <li class="hero-item">💖 Compare facilement les savons</li>
+       <li class="hero-item">🧖‍♀️Teste ton profil avec notre quiz ludique</li>
+       <li class="hero-item">🪄Explore des articles inspirants</li>
+     </ul>
+    </div>
+    <div class="col-2">
+       <img class="soaps-img" src="{{ asset('/styles/img/soaps.webp') }}" alt="soaps image"> 
+    </div>
+  </div>
+  <div class="animated-bar">
+    <span>LA CORVETTE</span>
+    <span>LA VIE CLAIRE</span>
+    <span>NATURE ET DECOUVERTE</span>
+    <span>GAIIA</span>
+    <span>AROMA-ZONE</span>
+    <span>FER A CHEVAL</span>
+ </div>
+</section>
+
+
+<section class="sec-features">
+    <div class="container">
+        <h1>Différentes <span>fonctionnalités</span> pour te guider 
+         dans tes choix !</h1>
+      <div class="features-grid">
+        <div class="feature-box comparator">
+             <span class="feature-icon">⚖️</span>
+             <h2 class="feature-title">LE COMPARATEUR</h2>
+           <div class="feature-content">
+             <p>Découvrez notre comparateur interactif de savons : sélectionnez simplement les savons qui vous intéressent, 
+             et des informations détaillées apparaissent automatiquement de chaque côté. Comparez les ingrédients, prix et 
+             caractéristiques en un coup d’œil, pour choisir facilement le savon qui vous convient le mieux. Simple, rapide et pratique !</p>
+          </div>
+        </div>
+        <div class="feature-box soaps">
+             <span class="feature-icon">🧼</span>
+             <h2 class="feature-title">LES SAVONS</h2>
+           <div class="feature-content">
+             <p>Sur cette page, retrouvez toutes nos fiches détaillées de savons. Chaque savon est présenté avec son nom et caractéristiques principales.
+              Vous pouvez facilement parcourir les savons, comparer leurs informations
+              et ajouter vos savons préférés à vos favoris pour les retrouver rapidement. </p>
+          </div>
+        </div>
+         <div class="feature-box exchange">
+            <span class="feature-icon">👥</span>
+             <h2 class="feature-title">ESPACE ECHANGE</h2>
+           <div class="feature-content">
+             <p>Sur cette page, retrouvez toutes nos fiches détaillées de savons. Chaque savon est présenté avec son nom et caractéristiques principales.
+              Vous pouvez facilement parcourir les savons, comparer leurs informations
+              et ajouter vos savons préférés à vos ffavoris pour les retrouver rapidement. </p>
+          </div>
+           </div>
+        </div>
+    </div>      
+</section>
+
+<section class="sec-soaps">
+  <div class="container">
+    <h1> VOS HISTOIRES, VOS AVIS, VOS SAVONS..</h1>
+      <p class="intro">une page dédiée aux avis pour mieux 
+       connaître chaque savon.</p>
+       <div class="soap-cards">
+        <div class="card">
+               <img src="{{ asset('/styles/img/savon-kojic-acid.webp') }}" alt="Savon Kojic Acid">
+               {# <img class="stars" src="etoiles.svg" alt="Note 5 étoiles"> #}
+               <h3>Savon Kojic Acid</h3>
+               <p>Un savon éclaircissant doux qui aide à uniformiser le teint et à illuminer la peau tout en la nourrissant en profondeur.</p>
+        </div>
+
+       <div class="card">
+               <img src="{{ asset('/styles/img/savon-kojic-acid.webp') }}" alt="Savon Kojic Acid">
+               {# <img class="stars" src="etoiles.svg" alt="Note 5 étoiles"> #}
+               <h3>Savon Kojic Acid</h3>
+               <p>Un savon éclaircissant doux qui aide à uniformiser le teint et à illuminer la peau tout en la nourrissant en profondeur.</p>
+        </div>
+
+          <div class="card">
+               <img src="{{ asset('/styles/img/savon-kojic-acid.webp') }}" alt="Savon Kojic Acid">
+               {# <img class="stars" src="etoiles.svg" alt="Note 5 étoiles"> #}
+               <h3>Savon Kojic Acid</h3>
+               <p>Un savon éclaircissant doux qui aide à uniformiser le teint et à illuminer la peau tout en la nourrissant en profondeur.</p>
+         </div>
+       </div>
+        <a href="" class="btn pink">Décourvrir</a>
+  </div>
+</section>
+
+<section class="sec-exchange">
+  <div class="container">
+    <h1> TIPS, EXPÉRIENCES ET PARTAGES</h1>
+    <div class="exchange-content">
+        <div class="col-1">
+         <p>Partagez vos tests, vos impressions et vos petites trouvailles autour des savons !</p>
+        </div>
+        <div class="col-2">
+          <img class="exchange-img" src="{{ asset('/styles/img/comments-img.svg') }}" alt="soaps image">
+        </div>
+     </div>
+        <a href="" class="btn">Décourvir</a> 
+  </div>
+</section>
+
+<section class="sec-shops">
+   <div class="container">
+      <h1>Recherchez les boutiques qui vendent  les meilleurs
+       savons en France !<br>👇</h1>
+      <a href="" class="btn">Découvrir</a> 
+   </div>
+</section>
+{% endblock %} 
+

@@ -1,0 +1,30 @@
+.sec-soaps {
+    border: 1px solid var(--black);
+    background-color: var(--soft-purple);
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        padding: 10rem;
+
+        .h1 {
+            position: relative;
+            // &::after {
+            //     content: "";
+            //     position: absolute;
+            //     top: 0.3125rem;
+            //     z-index: -1;
+            //     right: 0;
+            //     width: 20rem;
+            //     height: 80%;
+            //     background: var(--white);
+            // }
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 28rem;
+            font-weight: 600;
+        }
+    }
+}
