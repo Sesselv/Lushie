@@ -1,0 +1,44 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+<section class="sec-admin-soaps">
+    <div class="container">
+        <h1>TOUT LES SAVONS</h1>
+
+        <table class="soap-table">
+            <thead>
+                <tr>
+                    <th>Nom du savon</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for soap in soaps %}
+                    <tr>
+                        <td>{{ soap.name }}</td>
+                        <td>
+                            <a href="{{ path('app_admin_soap_show', {'id': soap.id}) }}">Voir</a> |
+<form method="post" action="{{ path('app_admin_soap_delete', {'id': soap.id}) }}" style="display:inline;">
+    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce savon ?');">Supprimer</button>
+</form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2">Aucun savon trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+                    <div class="soap-form">
+                        <h1>Créer un nouveau savon</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">Enregistrer</button>
+    {{ form_end(form) }}
+                    </div>
+    </div>
+</section>
+{% endblock %}

@@ -19,3 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
         bar.appendChild(content);
     }
 });
+
+const soapElements = document.querySelectorAll(".card p");
+
+soapElements.forEach((el) => {
+    const text = el.textContent;
+    const firstSentence = text.split(/([.!?])\s/)[0];
+    el.textContent =
+        firstSentence + (text.length > firstSentence.length ? "." : "");
+});

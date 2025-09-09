@@ -14,3 +14,11 @@
 
 @use "layouts/register_sections/register";
 @use "layouts/register_sections/login";
+
+///////////////////////////
+
+@use "layouts/admin/dashboard";
+@use "layouts/admin/admin_soaps";
+
+///////////////////////////
+@use "layouts/soap_sections/soap_page";

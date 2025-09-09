@@ -499,3 +499,45 @@ footer.section .container .col-2 ul {
 .sec-login .container .login-container p a {
   text-decoration: none;
 }
+
+.sec-dashboard {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sec-dashboard .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.sec-admin-soaps .container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.sec-soap_page {
+  background: var(--soft-purple);
+}
+.sec-soap_page .container .soap-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.sec-soap_page .container .soap-cards .card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--white);
+  max-width: 21rem;
+  height: fit-content;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--black);
+}
+.sec-soap_page .container .soap-cards .card h3 {
+  padding-top: 2rem;
+}

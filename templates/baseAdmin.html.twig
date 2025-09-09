@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/styles/app.css') }}" />
+        {% endblock %} {% block javascripts %} {% block importmap %}{{
+            importmap("app")
+        }}{% endblock %} {% endblock %}
+    </head>
+    <body>
+        <header class="section">
+            {% block header %}
+            <div class="container">
+                <img
+                    class="logo"
+                    src="{{ asset('/styles/img/logo-lush.svg') }}"
+                    alt="Lushie logo"
+                />
+                <div class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="{{ path('app_admin_soaps')}}">SAVONS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="">LES ARTICLES</a>
+                        </li>
+                        <li class="nav-item"><a href="">LES UTILISATEURS</a></li>
+                        <li class="nav-item"><a href="">LES COMMENTAIRES</a></li>
+                        <li class="nav-item">
+                            {% if app.user %}
+                            <a href="#">
+                                <img
+                                    class="profil-icon"
+                                    src="{{
+                                        asset('styles/img/profil-icon.svg')
+                                    }}"
+                                    alt=""
+                                />
+                                MON ESPACE
+                            </a>
+                            {% else %}
+                            <a href="{{ path('app_login') }}">
+                                <img
+                                    class="profil-icon"
+                                    src="{{
+                                        asset('styles/img/profil-icon.svg')
+                                    }}"
+                                    alt=""
+                                />
+                                Se connecter
+                            </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% endblock %}
+        </header>
+
+        <main>{% block body %}{% endblock %}</main>
+
+        <footer class="section">
+            {% block footer %}
+
+            <div class="container">
+                <div class="col-1">
+                    <img
+                        class="logo"
+                        src="{{ asset('/styles/img/logo-lush.svg') }}"
+                        alt=""
+                    />
+                </div>
+                <div class="col-2">
+                    <ul>
+                        <li>Mentions légales</li>
+                        <li>....</li>
+                    </ul>
+                </div>
+            </div>
+
+            {% endblock %}
+        </footer>
+    </body>
+</html>
