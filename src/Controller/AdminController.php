@@ -10,6 +10,9 @@ use App\Entity\Soap;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\SoapType;
+use App\Entity\Media;
+
+
 
 
 
@@ -50,16 +53,41 @@ public function soaps(SoapRepository $soapRepository, Request $request, EntityMa
     $form = $this->createForm(SoapType::class, $soap);
     $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $em->persist($soap);
-        $em->flush();
+if ($form->isSubmitted() && $form->isValid()) {
+    // Set creation date
+    $soap->setCreatedAt(new \DateTimeImmutable("now"));
 
-        return $this->redirectToRoute('app_admin_soaps');
+
+
+ 
+
+    $images = $form->get('images')->getData();
+    if ($images) { 
+        foreach ($images as $image) {
+            $newFilePath = uniqid().'.'.$image->guessExtension();
+
+            
+            $image->move($this->getParameter('uploads_directory'), $newFilePath);
+
+            $media = new Media();
+            $media->setFilePath($newFilePath);
+            $media->setSoap($soap);
+            $media->setUser($this->getUser());
+        
+              
+            $media->setCreatedAt(new \DateTimeImmutable("now"));
+            $em->persist($media);
+        }
     }
 
-    return $this->render('admin/soaps.html.twig', [
+     $em->persist($soap);
+
+    $em->flush(); 
+    return $this->redirectToRoute('app_admin_soaps');
+}
+
+return $this->render('admin/soaps.html.twig', [
         'soaps' => $soaps,
-        'form' => $form->createView(),
-    ]);
+        'form' => $form->createView(),]);
 }
 }

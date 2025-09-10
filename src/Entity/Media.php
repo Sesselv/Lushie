@@ -24,7 +24,7 @@ class Media
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'media')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Article $article = null;
 
     #[ORM\ManyToOne(inversedBy: 'media')]
@@ -47,6 +47,8 @@ class Media
 
         return $this;
     }
+
+    
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {

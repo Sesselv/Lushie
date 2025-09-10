@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}{% endblock %}</title>
-
+        <title>{% block title %}Espace Admin - Lushie{% endblock %}</title>
+         <meta name="description" content="{% block meta_description %}Découvrez Lushie, un univers doux et coloré autour des savons, avec conseils, comparateur et avis.{% endblock %}">
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('/styles/app.css') }}" />
         {% endblock %} {% block javascripts %} {% block importmap %}{{
@@ -21,6 +21,9 @@
                 />
                 <div class="nav">
                     <ul class="nav-list">
+                    <li class="nav-item">
+                            <a href="{{ path('app_admin') }}">DASHBOARD</a>
+                    </li>
                         <li class="nav-item">
                             <a href="{{ path('app_admin_soaps')}}">SAVONS</a>
                         </li>
@@ -37,7 +40,7 @@
                                     src="{{
                                         asset('styles/img/profil-icon.svg')
                                     }}"
-                                    alt=""
+                                    alt=" icon profil"
                                 />
                                 MON ESPACE
                             </a>
@@ -48,7 +51,7 @@
                                     src="{{
                                         asset('styles/img/profil-icon.svg')
                                     }}"
-                                    alt=""
+                                    alt=" icon profil"
                                 />
                                 Se connecter
                             </a>
@@ -70,7 +73,7 @@
                     <img
                         class="logo"
                         src="{{ asset('/styles/img/logo-lush.svg') }}"
-                        alt=""
+                        alt=" logo Lushie"
                     />
                 </div>
                 <div class="col-2">

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %} 
+{% block body %}
+<section class="sec-soap_page">
+    <div class="container">
+        <h1>TOUT LES SAVONS</h1>
+        <p class="intro">Un espace pour explorer différents savons, découvrir leurs caractéristiques, consulter les notes attribuées par la communauté et enregistrer vos préférés dans vos favoris. </p>
+          <div class="soap-cards">
+          
+            {% for soap in soaps %}
+             <a href="{{ path('app_soap_show', {id: soap.id}) }}" class="card-link">
+                <div class="card">
+                    {% if soap.media|length > 0 %}
+                        <div class="soap-images">
+                           {% for image in soap.media %}
+                            <img src="{{ asset('uploads/soaps/' ~ image.filePath) }}" alt="{{ soap.name }}">
+                         {% endfor %}
+                        </div>
+                    {% endif %}
+                        <h2>{{ soap.name }}</h2>
+                    <p>{{ soap.description }}</p>
+
+                                <form method="post" action="{{ path('toggle_favorite', {id: soap.id}) }}">
+    <button type="submit" class="btn-fav">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             fill="currentColor" 
+             viewBox="0 0 24 24" 
+             width="24" 
+             height="24">
+          <path d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z"/>
+        </svg>
+    </button>
+</form>
+                </div>
+            {% else %}
+                <p>Aucun savon trouvé.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

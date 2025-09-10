@@ -16,9 +16,17 @@ final class SoapsController extends AbstractController
     {
         $soaps = $soapRepository->findAll();
 
-        return $this->render('soaps.html.twig', [
+        return $this->render('soaps/soaps.html.twig', [
             'soaps' => $soaps,
              'controller_name' => 'SoapController',
         ]);
     }
+
+    #[Route('/soaps/{id}', name: 'app_soap_show')]
+    public function showSoap(Soap $soap): Response
+   {
+    return $this->render('soaps/show.html.twig', [
+        'soap' => $soap,
+    ]);
+}
 }

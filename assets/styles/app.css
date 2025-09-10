@@ -23,9 +23,15 @@
   flex-direction: row;
   gap: 5rem;
 }
-.soap-cards .card {
+.soap-cards .soap-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.soap-cards .soap-cards .card {
   display: flex;
   flex-direction: column;
+  text-align: left;
   gap: 1rem;
   background: var(--white);
   max-width: 21rem;
@@ -34,7 +40,7 @@
   border-radius: 1rem;
   border: 1px solid var(--black);
 }
-.soap-cards .card h3 {
+.soap-cards .soap-cards .card h3 {
   padding-top: 2rem;
 }
 
@@ -250,11 +256,11 @@ header.section .container .logo {
   display: flex;
   gap: 10rem;
 }
-.sec-features .container h1 {
+.sec-features .container h2 {
   max-width: 50rem;
   text-align: center;
 }
-.sec-features .container h1 span {
+.sec-features .container h2 span {
   display: inline-block;
   position: relative;
   z-index: 1;
@@ -309,7 +315,7 @@ header.section .container .logo {
   gap: 5rem;
   padding: 10rem;
 }
-.sec-soaps .container .h1 {
+.sec-soaps .container .h2 {
   position: relative;
 }
 .sec-soaps .container .intro {
@@ -331,7 +337,7 @@ header.section .container .logo {
   border-radius: 3rem;
   border: 1px solid var(--black);
 }
-.sec-exchange .container h1 {
+.sec-exchange .container h2 {
   font-size: 2rem;
 }
 .sec-exchange .container .exchange-content {
@@ -359,7 +365,7 @@ header.section .container .logo {
   align-items: center;
   gap: 5rem;
 }
-.sec-shops .container h1 {
+.sec-shops .container h2 {
   text-align: center;
   font-size: 2rem;
   max-width: 50rem;
@@ -522,23 +528,43 @@ footer.section .container .col-2 ul {
 .sec-soap_page {
   background: var(--soft-purple);
 }
+.sec-soap_page .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 .sec-soap_page .container .soap-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
+.sec-soap_page .container .soap-cards .card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 .sec-soap_page .container .soap-cards .card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: left;
   gap: 1rem;
   background: var(--white);
-  max-width: 21rem;
+  max-width: 23rem;
   height: fit-content;
   padding: 2rem;
   border-radius: 1rem;
   border: 1px solid var(--black);
 }
-.sec-soap_page .container .soap-cards .card h3 {
+.sec-soap_page .container .soap-cards .card img {
+  max-width: 18rem;
+}
+.sec-soap_page .container .soap-cards .card p {
+  max-width: 18rem;
+}
+.sec-soap_page .container .soap-cards .card h2 {
+  font-size: 1.5rem;
   padding-top: 2rem;
 }
 

@@ -1,23 +1,44 @@
 .sec-soap_page {
     background: var(--soft-purple);
     .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         .soap-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
 
+            .card-link {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+            }
+
             .card {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
+                text-align: left;
                 gap: 1rem;
                 background: var(--white);
-                max-width: 21rem;
+                max-width: 23rem;
                 height: fit-content;
                 padding: 2rem;
                 border-radius: 1rem;
                 border: 1px solid var(--black);
 
-                h3 {
+                img {
+                    max-width: 18rem;
+                }
+
+                p {
+                    max-width: 18rem;
+                }
+
+                h2 {
+                    font-size: 1.5rem;
                     padding-top: 2rem;
                 }
             }

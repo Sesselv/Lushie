@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\FavoriteRepository;
+use App\Entity\Soap;
+use App\Entity\Favorite;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+
+final class FavoriteController extends AbstractController
+{
+    #[Route('/favorite', name: 'app_favorite')]
+    public function index(): Response
+    {
+        return $this->render('favorite/index.html.twig', [
+            'controller_name' => 'FavoriteController',
+        ]);
+    }
+
+    #[Route('/favorite/soap/{id}', name: 'toggle_favorite', methods: ['POST'])]
+public function toggleFavorite(
+    Soap $soap, 
+    FavoriteRepository $favoriteRepository, 
+    EntityManagerInterface $em
+): Response {
+    $user = $this->getUser();
+
+    if (!$user) {
+        $this->addFlash('error', 'Vous devez être connecté pour ajouter un favori.');
+        return $this->redirectToRoute('app_login');
+    }
+
+
+    $favorite = $favoriteRepository->findOneBy([
+        'user' => $user,
+        'soap' => $soap,
+    ]);
+
+    if ($favorite) {
+        $em->remove($favorite);
+        $em->flush();
+
+        $this->addFlash('success', 'Savon retiré de vos favoris.');
+        $favorite = new Favorite();
+        $favorite->setUser($user);
+        $favorite->setSoap($soap);
+
+        $em->persist($favorite);
+        $em->flush();
+
+        $this->addFlash('success', 'Savon ajouté à vos favoris.');
+    }
+
+    return $this->redirectToRoute('app_admin_soaps');
+}
+
+}

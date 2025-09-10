@@ -31,14 +31,17 @@
             </tbody>
         </table>
         
-                    <div class="soap-form">
-                        <h1>Créer un nouveau savon</h1>
+            <div class="soap-form">
+    <h1>Créer un nouveau savon</h1>
 
+ <form method="post" enctype="multipart/form-data">
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn">Enregistrer</button>
+    {{ form_widget(form) }}
+    <button type="submit">Ajouter</button>
     {{ form_end(form) }}
-                    </div>
+</form>
+</div>
+
     </div>
 </section>
 {% endblock %}

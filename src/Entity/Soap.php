@@ -69,6 +69,7 @@ class Soap
         $this->ratings = new ArrayCollection();
         $this->favorites = new ArrayCollection();
         $this->media = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -184,6 +185,12 @@ class Soap
         return $this;
     }
 
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;

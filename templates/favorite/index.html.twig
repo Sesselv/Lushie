@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %} {% block title %}Lushie - Accueil{% endblock %}
+{% block body %}
+<h1>Mes favoris</h1>
+
+{% if favorites is not empty %}
+<ul class="favorites-list">
+    {% for favorite in favorites %}
+    <li>
+        <h2>{{ favorite.soap.name }}</h2>
+        <p>{{ favorite.soap.description }}</p>
+
+        <form
+            method="post"
+            action="{{ path('toggle_favorite', { id: favorite.soap.id }) }}"
+        >
+            <button type="submit" class="btn-fav">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                >
+                    <path
+                        d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z"
+                    />
+                </svg>
+            </button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Vous n’avez encore aucun favori.</p>
+{% endif %} {% endblock %}

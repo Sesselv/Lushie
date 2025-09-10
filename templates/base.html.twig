@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
+         <meta name="description" content="{% block meta_description %}Découvrez Lushie, un univers doux et coloré autour des savons, avec conseils, comparateur et avis.{% endblock %}">
 
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('/styles/app.css') }}">
@@ -27,12 +28,12 @@
                        <li class="nav-item">
     {% if app.user %}
         <a href="#">
-            <img class="profil-icon" src="{{ asset('styles/img/profil-icon.svg') }}" alt="">
+            <img class="profil-icon" src="{{ asset('styles/img/profil-icon.svg') }}" alt="icon profil">
             Mon espace
         </a>
     {% else %}
         <a href="{{ path('app_login') }}">
-            <img class="profil-icon" src="{{ asset('styles/img/profil-icon.svg') }}" alt="">
+            <img class="profil-icon" src="{{ asset('styles/img/profil-icon.svg') }}" alt=" icon profil">
             Se connecter
         </a>
     {% endif %}
@@ -55,7 +56,7 @@
 
   <div class="container">
     <div class="col-1">
-      <img class="logo" src="{{ asset('/styles/img/logo-lush.svg') }}"alt="">
+      <img class="logo" src="{{ asset('/styles/img/logo-lush.svg') }}"alt="logo Lushie">
       </div>
     <div class="col-2">
      <ul>
