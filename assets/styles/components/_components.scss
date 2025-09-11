@@ -1,28 +1,49 @@
 .soap-cards {
-    display: flex;
-    flex-direction: row;
-    gap: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 
-    .soap-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
 
-        .card {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            gap: 1rem;
-            background: var(--white);
-            max-width: 21rem;
-            height: fit-content;
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid var(--black);
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        gap: 1rem;
+        background: var(--white);
+        max-width: 23rem;
+        height: fit-content;
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid var(--black);
 
-            h3 {
-                padding-top: 2rem;
-            }
+        img {
+            max-width: 18rem;
+        }
+
+        p {
+            max-width: 18rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            padding-top: 2rem;
+        }
+        .fav-icon {
+            cursor: pointer;
+            fill: none;
+            stroke: black;
+            stroke-width: 2;
+            transition: fill 0.2s;
+        }
+
+        .fav-icon.active {
+            fill: black;
         }
     }
 }

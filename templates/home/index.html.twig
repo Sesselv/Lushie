@@ -94,41 +94,29 @@
         <p class="intro">
             une page dédiée aux avis pour mieux connaître chaque savon.
         </p>
+
         <div class="soap-cards">
-            <div class="card">
-                <img
-                    src="{{ asset('/styles/img/savon-kojic-acid.webp') }}"
-                    alt="Savon Kojic Acid"
-                />
-                {#
-                <img class="stars" src="etoiles.svg" alt="Note 5 étoiles" /> #}
-                <h3>Savon Kojic Acid</h3>
-                <p>desc</p>
-            </div>
+            {% for soap in soaps %}
+                <div class="card">
+                    {% if soap.media|length > 0 %}
+                        <img
+                            src="{{ asset('uploads/soaps/' ~ soap.media[0].filePath) }}"
+                            alt="{{ soap.name }}"
+                        />
+                    {% else %}
+                        <img
+                            src="{{ asset('/styles/img/default-soap.webp') }}"
+                            alt="{{ soap.name }}"
+                        />
+                    {% endif %}
 
-            <div class="card">
-                <img
-                    src="{{ asset('/styles/img/savon-kojic-acid.webp') }}"
-                    alt="Savon Kojic Acid"
-                />
-                {#
-                <img class="stars" src="etoiles.svg" alt="Note 5 étoiles" /> #}
-                <h3>Savon Kojic Acid</h3>
-                <p>desc</p>
-            </div>
-
-            <div class="card">
-                <img
-                    src="{{ asset('/styles/img/savon-kojic-acid.webp') }}"
-                    alt="Savon Kojic Acid"
-                />
-                {#
-                <img class="stars" src="etoiles.svg" alt="Note 5 étoiles" /> #}
-                <h3>Savon Kojic Acid</h3>
-                <p>desc</p>
-            </div>
+                    <h3>{{ soap.name }}</h3>
+                    <p>{{ soap.description }}</p>
+                </div>
+            {% endfor %}
         </div>
-        <a href="" class="btn pink">Décourvrir</a>
+
+        <a href="{{ path('app_soaps') }}" class="btn">Découvrir</a>
     </div>
 </section>
 

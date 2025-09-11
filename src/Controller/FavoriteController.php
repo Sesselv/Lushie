@@ -8,54 +8,61 @@ use App\Repository\FavoriteRepository;
 use App\Entity\Soap;
 use App\Entity\Favorite;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-
+use Symfony\Component\Routing\Annotation\Route;
 
 final class FavoriteController extends AbstractController
 {
     #[Route('/favorite', name: 'app_favorite')]
-    public function index(): Response
+    public function index(FavoriteRepository $favoriteRepository): Response
     {
+        $user = $this->getUser();
+
+        if (!$user) {
+            $this->addFlash('error', 'Vous devez être connecté pour voir vos favoris.');
+                   return new Response(); 
+        }
+
+        $favorites = $favoriteRepository->findBy(['user' => $user]);
+
         return $this->render('favorite/index.html.twig', [
-            'controller_name' => 'FavoriteController',
+            'favorites' => $favorites,
         ]);
     }
 
     #[Route('/favorite/soap/{id}', name: 'toggle_favorite', methods: ['POST'])]
-public function toggleFavorite(
-    Soap $soap, 
-    FavoriteRepository $favoriteRepository, 
-    EntityManagerInterface $em
-): Response {
-    $user = $this->getUser();
+    public function toggleFavorite(
+        Soap $soap,
+        FavoriteRepository $favoriteRepository,
+        EntityManagerInterface $em
+    ): Response {
+        $user = $this->getUser();
 
-    if (!$user) {
-        $this->addFlash('error', 'Vous devez être connecté pour ajouter un favori.');
-        return $this->redirectToRoute('app_login');
-    }
+        if (!$user) {
+            $this->addFlash('error', 'Vous devez être connecté pour ajouter un favori.');
+            return $this->redirectToRoute('app_login');
+        }
 
+        $favorite = $favoriteRepository->findOneBy([
+            'user' => $user,
+            'soap' => $soap,
+        ]);
 
-    $favorite = $favoriteRepository->findOneBy([
-        'user' => $user,
-        'soap' => $soap,
-    ]);
+if ($favorite) {
 
-    if ($favorite) {
-        $em->remove($favorite);
-        $em->flush();
+    $em->remove($favorite);
+    $em->flush();
+    $this->addFlash('success', 'Savon retiré de vos favoris.');
+} else {
 
-        $this->addFlash('success', 'Savon retiré de vos favoris.');
-        $favorite = new Favorite();
-        $favorite->setUser($user);
-        $favorite->setSoap($soap);
-
-        $em->persist($favorite);
-        $em->flush();
-
-        $this->addFlash('success', 'Savon ajouté à vos favoris.');
-    }
-
-    return $this->redirectToRoute('app_admin_soaps');
+    $favorite = new Favorite();
+    $favorite->setUser($user);
+    $favorite->setSoap($soap);
+    $em->persist($favorite);
+    $em->flush();
+    $this->addFlash('success', 'Savon ajouté à vos favoris.');
 }
 
+    return new Response();
+
+    }
 }

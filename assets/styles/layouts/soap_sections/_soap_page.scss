@@ -1,46 +1,106 @@
 .sec-soap_page {
     background: var(--soft-purple);
+    display: flex;
+    align-items: center;
+
     .container {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
         text-align: center;
-        .soap-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+        align-items: flex-start;
+        padding: 10rem;
 
-            .card-link {
-                text-decoration: none;
-                color: inherit;
+        .top {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            justify-content: flex-start;
+
+            h1 {
+                text-transform: uppercase;
+                letter-spacing: 0;
+            }
+        }
+
+        .soap-images {
+            max-width: 60rem;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: auto;
                 display: block;
             }
+        }
+        .rating {
+            display: flex;
+            gap: 5px;
+            font-size: 2rem;
+            cursor: pointer;
 
-            .card {
+            .star {
+                display: inline-flex;
+                color: lightgray;
+
+                &.active {
+                    color: gold;
+                }
+
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+                    fill: currentColor;
+                    transition: fill 0.2s;
+
+                    polygon {
+                        border: 1px solid black;
+                    }
+                }
+            }
+        }
+
+        .rating-static {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin: 1rem 0;
+            background-color: var(--white);
+            border: 0.1rem solid black;
+            border-radius: 1rem;
+            padding: 0.2rem 1rem;
+            p {
+                padding-right: 1rem;
+                font-weight: 600;
+            }
+
+            .star {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: left;
-                gap: 1rem;
-                background: var(--white);
-                max-width: 23rem;
-                height: fit-content;
-                padding: 2rem;
-                border-radius: 1rem;
-                border: 1px solid var(--black);
+                justify-content: center;
+                color: lightgray;
 
-                img {
-                    max-width: 18rem;
+                &.active {
+                    color: gold;
                 }
 
-                p {
-                    max-width: 18rem;
+                svg {
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    fill: currentColor;
                 }
+            }
+        }
 
-                h2 {
-                    font-size: 1.5rem;
-                    padding-top: 2rem;
-                }
+        .fav-icon {
+            cursor: pointer;
+            fill: none;
+            stroke: black;
+            stroke-width: 2;
+            transition: fill 0.2s;
+
+            &.active {
+                fill: black;
             }
         }
     }

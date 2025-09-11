@@ -1,6 +1,87 @@
-{% extends 'base.html.twig' %} {% block body %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
 <section class="sec-soap_page">
     <div class="container">
+
+        <div class="top">
+            <h1>{{ soap.name }}</h1>
+
+            {% set totalRatings = soap.ratings|length %}
+            {% set average = totalRatings > 0 
+                ? (soap.ratings|map(r => r.note)|reduce((carry, n) => carry + n) / totalRatings)|round(0, 'floor') 
+                : 0 
+            %}
+
+            
+
+            <div class="rating-static">
+            <p>{{ totalRatings }}</p>
+                {% for i in 1..5 %}
+                    <span class="star {% if i <= average %}active{% endif %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="currentColor"/>
+                        </svg>
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="soap-images">
+            {% if soap.media|length > 0 %}
+                {% for image in soap.media %}
+                    <img src="{{ asset('uploads/soaps/' ~ image.filePath) }}" alt="{{ soap.name }}" />
+                {% endfor %}
+            {% else %}
+                <img src="{{ asset('/styles/img/default-soap.webp') }}" alt="{{ soap.name }}" />
+            {% endif %}
+        </div>
+
+        <div class="rating" data-soap-id="{{ soap.id }}">
+            {% set userRating = app.user ? soap.ratings|filter(r => r.user.id == app.user.id)|first : null %}
+            {% set userNote = userRating ? userRating.note : 0 %}
+            {% for i in 1..5 %}
+                <span class="star {% if i <= userNote %}active{% endif %}" data-value="{{ i }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="currentColor"/>
+                    </svg>
+                </span>
+            {% endfor %}
+        </div>
+
+        {% set isFavorite = false %}
+        {% if app.user %}
+            {% for fav in app.user.favorite %}
+                {% if fav.soap.id == soap.id %}
+                    {% set isFavorite = true %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+             class="fav-icon {{ isFavorite ? 'active' : '' }}" data-soap-id="{{ soap.id }}">
+            <path d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z" />
+        </svg>
+
+        {% if soap.benefits %}
+            <h2>Bénéfices</h2>
+            <p>{{ soap.benefits }}</p>
+        {% endif %}
+
+        {% if soap.precautions %}
+            <h2>Précautions</h2>
+            <p>{{ soap.precautions }}</p>
+        {% endif %}
+
+        {% if soap.description %}
+            <h2>Description</h2>
+            <p>{{ soap.description }}</p>
+        {% endif %}
+
+        {% if soap.usageTime %}
+            <h2>Temps d’utilisation</h2>
+            <p>{{ soap.usageTime }}</p>
+        {% endif %}
 
     </div>
 </section>

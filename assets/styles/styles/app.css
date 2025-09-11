@@ -19,29 +19,47 @@
 }
 
 .soap-cards {
-  display: flex;
-  flex-direction: row;
-  gap: 5rem;
-}
-.soap-cards .soap-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
-.soap-cards .soap-cards .card {
+.soap-cards .card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.soap-cards .card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: left;
   gap: 1rem;
   background: var(--white);
-  max-width: 21rem;
+  max-width: 23rem;
   height: fit-content;
   padding: 2rem;
   border-radius: 1rem;
   border: 1px solid var(--black);
 }
-.soap-cards .soap-cards .card h3 {
+.soap-cards .card img {
+  max-width: 18rem;
+}
+.soap-cards .card p {
+  max-width: 18rem;
+}
+.soap-cards .card h2 {
+  font-size: 1.5rem;
   padding-top: 2rem;
+}
+.soap-cards .card .fav-icon {
+  cursor: pointer;
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+  transition: fill 0.2s;
+}
+.soap-cards .card .fav-icon.active {
+  fill: black;
 }
 
 .btn {
@@ -91,7 +109,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 15rem;
-  padding-bottom: 10rem;
 }
 
 section,
@@ -359,6 +376,9 @@ header.section .container .logo {
   width: 15rem;
 }
 
+.sec-shops {
+  padding-bottom: 10rem;
+}
 .sec-shops .container {
   display: flex;
   flex-direction: column;
@@ -527,43 +547,170 @@ footer.section .container .col-2 ul {
 
 .sec-soap_page {
   background: var(--soft-purple);
+  display: flex;
+  align-items: center;
 }
 .sec-soap_page .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: flex-start;
+  padding: 10rem;
+}
+.sec-soap_page .container .top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: flex-start;
+}
+.sec-soap_page .container .top h1 {
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+.sec-soap_page .container .soap-images {
+  max-width: 60rem;
+  width: 100%;
+}
+.sec-soap_page .container .soap-images img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.sec-soap_page .container .rating {
+  display: flex;
+  gap: 5px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.sec-soap_page .container .rating .star {
+  display: inline-flex;
+  color: lightgray;
+}
+.sec-soap_page .container .rating .star.active {
+  color: gold;
+}
+.sec-soap_page .container .rating .star svg {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
+  transition: fill 0.2s;
+}
+.sec-soap_page .container .rating .star svg polygon {
+  border: 1px solid black;
+}
+.sec-soap_page .container .rating-static {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin: 1rem 0;
+  background-color: var(--white);
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  padding: 0.2rem 1rem;
+}
+.sec-soap_page .container .rating-static p {
+  padding-right: 1rem;
+  font-weight: 600;
+}
+.sec-soap_page .container .rating-static .star {
+  display: flex;
+  justify-content: center;
+  color: lightgray;
+}
+.sec-soap_page .container .rating-static .star.active {
+  color: gold;
+}
+.sec-soap_page .container .rating-static .star svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: currentColor;
+}
+.sec-soap_page .container .fav-icon {
+  cursor: pointer;
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+  transition: fill 0.2s;
+}
+.sec-soap_page .container .fav-icon.active {
+  fill: black;
+}
+
+.sec-soaps_page {
+  background: var(--soft-purple);
+}
+.sec-soaps_page .container {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 5rem;
+  padding-top: 15rem;
 }
-.sec-soap_page .container .soap-cards {
+.sec-soaps_page .container .intro {
+  max-width: 50rem;
+}
+.sec-soaps_page .container .soap-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 3rem;
+  padding-top: 10rem;
+  row-gap: 10rem;
 }
-.sec-soap_page .container .soap-cards .card-link {
+.sec-soaps_page .container .soap-cards .card-link {
   text-decoration: none;
   color: inherit;
   display: block;
 }
-.sec-soap_page .container .soap-cards .card {
+.sec-soaps_page .container .soap-cards .card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   text-align: left;
   gap: 1rem;
   background: var(--white);
   max-width: 23rem;
-  height: fit-content;
+  height: 35rem;
   padding: 2rem;
   border-radius: 1rem;
   border: 1px solid var(--black);
 }
-.sec-soap_page .container .soap-cards .card img {
+.sec-soaps_page .container .soap-cards .card .soap-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+.sec-soaps_page .container .soap-cards .card .soap-images img {
   max-width: 18rem;
 }
-.sec-soap_page .container .soap-cards .card p {
+.sec-soaps_page .container .soap-cards .card .rating-static {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.sec-soaps_page .container .soap-cards .card .rating-static .star {
+  display: flex;
+  justify-content: center;
+  color: lightgray;
+}
+.sec-soaps_page .container .soap-cards .card .rating-static .star.active {
+  color: gold;
+}
+.sec-soaps_page .container .soap-cards .card .rating-static .star svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: currentColor;
+}
+.sec-soaps_page .container .soap-cards .card p {
   max-width: 18rem;
 }
-.sec-soap_page .container .soap-cards .card h2 {
+.sec-soaps_page .container .soap-cards .card h2 {
   font-size: 1.5rem;
-  padding-top: 2rem;
+  width: 95%;
 }
