@@ -557,6 +557,12 @@ footer.section .container .col-2 ul {
   text-align: center;
   align-items: flex-start;
   padding: 10rem;
+  gap: 3rem;
+}
+.sec-soap_page .container .list-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
 .sec-soap_page .container .top {
   display: flex;

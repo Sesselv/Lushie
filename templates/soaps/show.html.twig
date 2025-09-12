@@ -8,10 +8,6 @@
             <h1>{{ soap.name }}</h1>
 
             {% set totalRatings = soap.ratings|length %}
-            {% set average = totalRatings > 0 
-                ? (soap.ratings|map(r => r.note)|reduce((carry, n) => carry + n) / totalRatings)|round(0, 'floor') 
-                : 0 
-            %}
 
             
 
@@ -63,23 +59,32 @@
             <path d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z" />
         </svg>
 
-        {% if soap.benefits %}
-            <h2>Bénéfices</h2>
-            <p>{{ soap.benefits }}</p>
-        {% endif %}
 
-        {% if soap.precautions %}
-            <h2>Précautions</h2>
-            <p>{{ soap.precautions }}</p>
-        {% endif %}
-
+        
         {% if soap.description %}
             <h2>Description</h2>
             <p>{{ soap.description }}</p>
         {% endif %}
 
+        <div class="list-container">
+
+       <div class="col-1">
+        {% if soap.benefits %}
+            <h2>Bénéfices</h2>
+            <p>{{ soap.benefits }}</p>
+        {% endif %}
+      </div>
+       <div class="col-2">
+        {% if soap.precautions %}
+            <h2>Précautions</h2>
+            <p>{{ soap.precautions }}</p>
+        {% endif %}
+       </div>
+
+        </div>
+
         {% if soap.usageTime %}
-            <h2>Temps d’utilisation</h2>
+            <h2>Quand utiliser?</h2>
             <p>{{ soap.usageTime }}</p>
         {% endif %}
 

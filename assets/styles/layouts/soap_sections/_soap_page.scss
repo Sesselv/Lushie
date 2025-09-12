@@ -10,6 +10,13 @@
         text-align: center;
         align-items: flex-start;
         padding: 10rem;
+        gap: 3rem;
+
+        .list-container {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+        }
 
         .top {
             display: flex;
