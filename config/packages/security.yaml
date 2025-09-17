@@ -17,7 +17,9 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        # prod:
+        #     pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #     security: false
         main:
             lazy: true
             provider: app_user_provider # tu peux changer par app_user_provider si tu veux BDD
@@ -36,6 +38,9 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }
+        - { path: ^/favorite, roles: ROLE_USER }
+        - { path: ^/rate, roles: ROLE_USER }
         #{ path: ^/profile, roles: ROLE_USER }
 
 when@test:

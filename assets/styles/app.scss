@@ -23,3 +23,13 @@
 ///////////////////////////
 @use "layouts/soap_sections/soap_page";
 @use "layouts/soap_sections/soaps_page";
+
+///////////////////////////
+@use "layouts/user/sec_dashboard";
+///////////////////////////
+@use "layouts/article_sections/article-form";
+@use "layouts/article_sections/article_page";
+@use "layouts/article_sections/articles_page";
+
+///////////////////////////
+@use "layouts/comparateur";

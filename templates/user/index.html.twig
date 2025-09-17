@@ -1,24 +1,53 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block body %}
+<section class="sec-dashboard">
+    <div class="container">
+        <h1>Mon Dashboard !</h1>
+        <div class="profile-container">
+            <div class="profile">
+                {# PHOTO + BOUTON SUPPRIMER #}
+                <div class="photo-wrapper">
+                    <img
+                        src="{{ asset(profilePhotoPath) }}"
+                        alt="Photo de profil"
+                        class="profile-img"
+                    />
 
-{% block title %}Hello UserController!{% endblock %}
+                    {% if profilePhotoPath != 'uploads/users/pp.png' %}
+                    <form
+                        action="{{ path('app_user_delete_photo') }}"
+                        method="POST"
+                    >
+                        <button
+                            type="submit"
+                            class="delete_photo_overlay"
+                            onclick="return confirm('Voulez-vous vraiment supprimer votre photo ?')"
+                        >
+                            Supprimer
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
 
-{% block body %}
-<section class="sec-articles">
-<div class="container">
-<div class="intro">
-    <h1>BIENVENUE SUR L’ESPACE ECHANGE !</h1>
-    <p>Un espace ouvert à tous pour échanger vos conseils, raconter vos découvertes et vous inspirer des retours des autres passionnés.</p>
-</div>
+            {# FORMULAIRE DE MISE À JOUR #}
+            {{ form_start(form) }}
 
-<div class="actions">
-<a href="{{ path('app_user_create_article')}}">Créer un article</a>
-<p>Trier par</p>
-<p>Rechercher par mots clés</p>
-</div>
+            {{ form_row(form.username) }}
+               {% if profilePhotoPath == 'uploads/users/pp.png' %}
+            {{ form_row(form.photo) }}
+            {% endif %}
 
-<div class="articles">
 
-</div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+            {{ form_end(form) }}
+        </div>
+<div class="profile-links">
+    <a href="{{ path('app_user_details', {userId: app.user.id, type: 'articles'}) }}">Mes articles</a>
+    <a href="{{ path('app_user_details', {userId: app.user.id, type: 'commentaires'}) }}">Mes commentaires</a>
+    <a href="{{ path('app_user_details', {userId: app.user.id, type: 'favorite'}) }}">Mes favoris</a>
+    <a href="" class="delete-account">Supprimer mon compte</a>
+    <a href="{{ path('app_logout') }}">Se déconnecter</a>
 </div>
 </section>
 {% endblock %}

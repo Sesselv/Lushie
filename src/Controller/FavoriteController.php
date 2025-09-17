@@ -9,6 +9,8 @@ use App\Entity\Soap;
 use App\Entity\Favorite;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 
 final class FavoriteController extends AbstractController
 {
@@ -30,6 +32,7 @@ final class FavoriteController extends AbstractController
     }
 
     #[Route('/favorite/soap/{id}', name: 'toggle_favorite', methods: ['POST'])]
+   #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function toggleFavorite(
         Soap $soap,
         FavoriteRepository $favoriteRepository,

@@ -29,10 +29,10 @@
                             <li class="nav-item"><a href="{{ path('app_home') }}">Accueil</a></li>
                             <li class="nav-item"><a href="{{ path('app_soaps') }}">Les savons</a></li>
                             <li class="nav-item"><a href="">Le comparateur</a></li>
-                              <li class="nav-item"><a href="{{ path('app_user_articles') }}">Espace échange</a></li>
+                              <li class="nav-item"><a href="{{ path('app_articles') }}">Espace échange</a></li>
                        <li class="nav-item">
     {% if app.user %}
-        <a href="#">
+        <a href="{{ path('app_user_dashboard')}}">
             <img class="profil-icon" src="{{ asset('styles/img/profil-icon.svg') }}" alt="icon profil">
             Mon espace
         </a>

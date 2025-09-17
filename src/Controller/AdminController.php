@@ -67,7 +67,7 @@ if ($form->isSubmitted() && $form->isValid()) {
             $newFilePath = uniqid().'.'.$image->guessExtension();
 
             
-            $image->move($this->getParameter('uploads_directory'), $newFilePath);
+            $image->move($this->getParameter('uploads_soaps_directory'), $newFilePath);
 
             $media = new Media();
             $media->setFilePath($newFilePath);

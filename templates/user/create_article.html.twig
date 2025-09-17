@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %} {% block body %}
+<section class="sec-user-articles">
+    <div class="container">
+        <div class="article-form">
+            <h1>Créer un nouvel article</h1>
+
+            {{ form_start(form, { attr: { enctype: "multipart/form-data" } }) }}
+
+            {# Affiche toutes les erreurs globales du formulaire #}
+            {{ form_errors(form) }}
+
+            <div>
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <div>
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content) }}
+                {{ form_errors(form.content) }}
+            </div>
+
+            <div>
+                {{ form_label(form.images) }}
+                {{ form_widget(form.images) }}
+                {{ form_errors(form.images) }}
+            </div>
+
+            <button type="submit">Ajouter</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

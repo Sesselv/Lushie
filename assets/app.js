@@ -1,4 +1,5 @@
 import "./bootstrap.js";
+// import "/app.css";
 document.addEventListener("turbo:load", () => {
     /*
      * Welcome to your app's main JavaScript file!
@@ -6,7 +7,7 @@ document.addEventListener("turbo:load", () => {
      * This file will be included onto the page via the importmap() Twig function,
      * which should already be in your base.html.twig.
      */
-    // import "/app.css";
+
     // import "./styles/app.scss";
 
     console.log(

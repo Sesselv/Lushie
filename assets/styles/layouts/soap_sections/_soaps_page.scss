@@ -6,7 +6,8 @@
         justify-content: center;
         text-align: center;
         gap: 5rem;
-        padding-top: 15rem;
+        padding: 10rem 5rem;
+
         .intro {
             max-width: 50rem;
         }
@@ -15,7 +16,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
-            padding-top: 10rem;
+            padding-top: 5rem;
             row-gap: 10rem;
 
             .card-link {
@@ -32,7 +33,7 @@
                 gap: 1rem;
                 background: var(--white);
                 max-width: 23rem;
-                height: 35rem;
+                height: 37rem;
                 padding: 2rem;
                 border-radius: 1rem;
                 border: 1px solid var(--black);

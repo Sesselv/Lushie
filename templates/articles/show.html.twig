@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="sec-article">
+  <div class="container">
+<div class="user">
+  {% set profilePhoto = article.user.media|first %}
+  <img 
+    src="{{ profilePhoto ? '/uploads/users/' ~ profilePhoto.filePath : '/images/pp.png' }}" 
+    alt="{{ article.user.username }}"
+  />
+  <p class="username">{{ article.user.username }}</p>
+</div>
+
+<p class="dateTime">{{ article.createdAt|date('d/m/Y H:i') }}</p>
+
+<h1>{{ article.title }}</h1>
+
+<p>{{ article.content }}</p>
+
+{% for image in article.media %}
+  <img class="article-img" src="/uploads/articles/{{ image.filePath }}" alt="{{ article.title }}" />
+{% endfor %}
+
+
+
+    </div>
+  </div>
+</section>
+{% endblock %}

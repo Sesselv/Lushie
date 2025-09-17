@@ -52,6 +52,7 @@ class Article
         $this->comment = new ArrayCollection();
         $this->media = new ArrayCollection();
         $this->reactions = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

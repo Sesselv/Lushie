@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %} {% block body %}
+<section class="sec-details">
+    <div class="container">
+        <h1>
+            {% if type == 'articles' %} Mes Articles {% elseif type ==
+            'commentaires' %} Mes Commentaires {% elseif type == 'favorite' %}
+            Mes Favoris {% endif %}
+        </h1>
+
+        {% if data is empty %}
+        <p>Aucun {{ type }} trouvé.</p>
+        {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom / Titre</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>
+                        {% if type == 'articles' %}
+                        <a
+                            href="{{
+                                path('app_article_show', { id: item.id })
+                            }}"
+                        >
+                            {{ item.title }}
+                        </a>
+                        {% elseif type == 'commentaires' %}
+                        <a
+                            href="{{
+                                path('app_article_show', {
+                                    id: item.article.id
+                                })
+                            }}"
+                        >
+                            {{ item.article.title }}
+                        </a>
+                        {% elseif type == 'favorite' %}
+                        <a
+                            href="{{
+                                path('app_soap_show', { id: item.soap.id })
+                            }}"
+                        >
+                            {{ item.soap.name }}
+                        </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if type == 'articles' %}
+                        <a
+                            href="{{
+                                path('app_article_show', { id: item.id })
+                            }}"
+                            >Voir</a
+                        >
+                        <form
+                            method="post"
+                            action="{{
+                                path('app_article_delete', { id: item.id })
+                            }}"
+                            style="display: inline"
+                            onsubmit="return confirm('Supprimer cet article ?');"
+                        >
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value="{{ csrf_token('delete' ~ item.id) }}"
+                            />
+                            <button type="submit">Supprimer</button>
+                        </form>
+                        {% elseif type == 'commentaires' %}
+                        <form
+                            method="post"
+                            action="{{
+                                path('app_comment_delete', { id: item.id })
+                            }}"
+                            style="display: inline"
+                            onsubmit="return confirm('Supprimer ce commentaire ?');"
+                        >
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value="{{ csrf_token('delete' ~ item.id) }}"
+                            />
+                            <button type="submit">Supprimer</button>
+                        </form>
+                        {% elseif type == 'favorite' %}
+                        <form
+                            method="post"
+                            action="{{
+                                path('app_favorite_remove', { id: item.id })
+                            }}"
+                            style="display: inline"
+                            onsubmit="return confirm('Retirer des favoris ?');"
+                        >
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value="{{ csrf_token('remove' ~ item.id) }}"
+                            />
+                            <button type="submit">Retirer</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -109,6 +109,32 @@
                             alt="{{ soap.name }}"
                         />
                     {% endif %}
+                    {% set totalRatings = soap.ratings|length %} {%
+                    set average = totalRatings > 0 ? (soap.ratings|map(r =>
+                    r.note)|reduce((carry, n) => carry + n) /
+                    totalRatings)|round(0, 'floor') : 0 %}
+
+                    <div class="rating-static">
+                        <p>{{ totalRatings }}</p>
+                        {% for i in 1..5 %}
+                        <span
+                            class="star {% if i <= average %}active{% endif %}"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                            >
+                                <polygon
+                                    points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </span>
+                        {% endfor %}
+                    </div>
+
 
                     <h3>{{ soap.name }}</h3>
                     <p>{{ soap.description }}</p>

@@ -28,7 +28,7 @@ class Media
     private ?Article $article = null;
 
     #[ORM\ManyToOne(inversedBy: 'media')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Soap $soap = null;
 
     public function getId(): ?int

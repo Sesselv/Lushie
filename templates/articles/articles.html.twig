@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %} {% block title %}Hello UserController!{% endblock
+%} {% block body %}
+<section class="sec-articles">
+    <div class="container">
+        <div class="intro">
+            <h1>BIENVENUE SUR L’ESPACE ECHANGE !</h1>
+            <p>
+                Un espace ouvert à tous pour échanger vos conseils, raconter vos
+                découvertes et vous inspirer des retours des autres passionnés.
+            </p>
+        </div>
+
+        <div class="actions">
+            <a href="{{ path('app_user_create_article') }}">👉 Créer un article</a>
+        </div>
+
+        <div class="articles">
+        
+                {% for article in articles %}
+                <div class="article-card">
+                     <a href="{{ path('app_article_show', {'id': article.id}) }}" class="card-link">
+                    <p class="article-user">{{ article.user.username }}</p>
+                    {% set image = article.media|first %}
+                    <img
+                        src="{{ image ? '/uploads/articles/' ~ image.filePath : '/images/default-article.jpg' }}"
+                        alt="{{ article.title }}"
+                    />
+                    <h3>{{ article.title }}</h3>
+                    </a>
+                </div>
+                {% else %}
+            </div>
+            <p>Aucun article disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
