@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %} {% block title %}Lushie - Accueil{% endblock %}
-{% block body %}
+{% block importmap %}
+{{ importmap(["app", "card", "animatedBar", "dropdown", "burger"]) }}
+{% endblock %} {% block body %}
 <section class="sec-hero">
     <div class="container">
         <div class="col-1">
             <h1>
-                Bienvenue sur Lushie ! Un univers doux et coloré autour des
-                savons.✨
+                <span class="highlight-white">Bienvenue sur Lushie !</span>
+                Un univers doux et coloré autour des savons.✨
             </h1>
             <ul class="hero-list">
                 <li class="hero-item">🧼 Des savons adaptés à chaque peau</li>
@@ -37,50 +39,52 @@
 <section class="sec-features">
     <div class="container">
         <h2>
-            Différentes <span>fonctionnalités</span> pour te guider dans tes
-            choix !
+            Différentes
+            <span class="highlight-sunny">fonctionnalités</span> pour te guider
+            dans tes choix !
         </h2>
         <div class="features-grid">
             <div class="feature-box comparator">
-                <span class="feature-icon">⚖️</span>
-                <h2 class="feature-title">LE COMPARATEUR</h2>
+                <div class="feature-header">
+                    <span class="feature-icon">⚖️</span>
+                    <h2 class="feature-title">LE COMPARATEUR</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
                 <div class="feature-content">
                     <p>
                         Découvrez notre comparateur interactif de savons :
                         sélectionnez simplement les savons qui vous intéressent,
                         et des informations détaillées apparaissent
-                        automatiquement de chaque côté. Comparez les
-                        ingrédients, prix et caractéristiques en un coup d’œil,
-                        pour choisir facilement le savon qui vous convient le
-                        mieux. Simple, rapide et pratique !
+                        automatiquement de chaque côté...
                     </p>
                 </div>
             </div>
+
             <div class="feature-box soaps">
-                <span class="feature-icon">🧼</span>
-                <h2 class="feature-title">LES SAVONS</h2>
+                <div class="feature-header">
+                    <span class="feature-icon">🧼</span>
+                    <h2 class="feature-title">LES SAVONS</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
                 <div class="feature-content">
                     <p>
                         Sur cette page, retrouvez toutes nos fiches détaillées
                         de savons. Chaque savon est présenté avec son nom et
-                        caractéristiques principales. Vous pouvez facilement
-                        parcourir les savons, comparer leurs informations et
-                        ajouter vos savons préférés à vos favoris pour les
-                        retrouver rapidement.
+                        caractéristiques principales...
                     </p>
                 </div>
             </div>
+
             <div class="feature-box exchange">
-                <span class="feature-icon">👥</span>
-                <h2 class="feature-title">ESPACE ECHANGE</h2>
+                <div class="feature-header">
+                    <span class="feature-icon">👥</span>
+                    <h2 class="feature-title">ESPACE ECHANGE</h2>
+                    <button class="toggle-btn">+</button>
+                </div>
                 <div class="feature-content">
                     <p>
-                        Sur cette page, retrouvez toutes nos fiches détaillées
-                        de savons. Chaque savon est présenté avec son nom et
-                        caractéristiques principales. Vous pouvez facilement
-                        parcourir les savons, comparer leurs informations et
-                        ajouter vos savons préférés à vos ffavoris pour les
-                        retrouver rapidement.
+                        Retrouvez toutes nos fiches détaillées de savons,
+                        comparez et ajoutez vos favoris facilement !
                     </p>
                 </div>
             </div>
@@ -90,55 +94,55 @@
 
 <section class="sec-soaps">
     <div class="container">
-        <h2>VOS HISTOIRES, VOS AVIS, VOS SAVONS..</h2>
+        <h2>
+            <span class="highlight-white">
+                VOS HISTOIRES, VOS AVIS, VOS SAVONS..
+            </span>
+        </h2>
         <p class="intro">
             une page dédiée aux avis pour mieux connaître chaque savon.
         </p>
 
         <div class="soap-cards">
             {% for soap in soaps %}
-                <div class="card">
-                    {% if soap.media|length > 0 %}
-                        <img
-                            src="{{ asset('uploads/soaps/' ~ soap.media[0].filePath) }}"
-                            alt="{{ soap.name }}"
-                        />
-                    {% else %}
-                        <img
-                            src="{{ asset('/styles/img/default-soap.webp') }}"
-                            alt="{{ soap.name }}"
-                        />
-                    {% endif %}
-                    {% set totalRatings = soap.ratings|length %} {%
-                    set average = totalRatings > 0 ? (soap.ratings|map(r =>
-                    r.note)|reduce((carry, n) => carry + n) /
-                    totalRatings)|round(0, 'floor') : 0 %}
+            <div class="card">
+                {% if soap.media|length > 0 %}
+                <img
+                    src="{{ asset('uploads/soaps/' ~ soap.media[0].filePath) }}"
+                    alt="{{ soap.name }}"
+                />
+                {% else %}
+                <img
+                    src="{{ asset('/styles/img/default-soap.webp') }}"
+                    alt="{{ soap.name }}"
+                />
+                {% endif %} {% set totalRatings = soap.ratings|length %} {% set
+                average = totalRatings > 0 ? (soap.ratings|map(r =>
+                r.note)|reduce((carry, n) => carry + n) / totalRatings)|round(0,
+                'floor') : 0 %}
 
-                    <div class="rating-static">
-                        <p>{{ totalRatings }}</p>
-                        {% for i in 1..5 %}
-                        <span
-                            class="star {% if i <= average %}active{% endif %}"
+                <div class="rating-static">
+                    <p>{{ totalRatings }}</p>
+                    {% for i in 1..5 %}
+                    <span class="star {% if i <= average %}active{% endif %}">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                            >
-                                <polygon
-                                    points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"
-                                    fill="currentColor"
-                                />
-                            </svg>
-                        </span>
-                        {% endfor %}
-                    </div>
-
-
-                    <h3>{{ soap.name }}</h3>
-                    <p>{{ soap.description }}</p>
+                            <polygon
+                                points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"
+                                fill="currentColor"
+                            />
+                        </svg>
+                    </span>
+                    {% endfor %}
                 </div>
+
+                <h3>{{ soap.name }}</h3>
+                <p>{{ soap.description }}</p>
+            </div>
             {% endfor %}
         </div>
 
@@ -148,7 +152,9 @@
 
 <section class="sec-exchange">
     <div class="container">
-        <h2>TIPS, EXPÉRIENCES ET PARTAGES</h2>
+        <h2>
+            <span class="highlight-white"> TIPS, EXPÉRIENCES ET PARTAGES </span>
+        </h2>
         <div class="exchange-content">
             <div class="col-1">
                 <p>
@@ -164,7 +170,7 @@
                 />
             </div>
         </div>
-        <a href="" class="btn">Décourvir</a>
+        <a href="{{ path('app_articles') }}" class="btn">Décourvir</a>
     </div>
 </section>
 
@@ -174,7 +180,7 @@
             Recherchez les boutiques qui vendent les meilleurs savons en France
             !<br />👇
         </h2>
-        <a href="" class="btn">Découvrir</a>
+        <a href="{{ path('shops') }}" class="btn">Découvrir</a>
     </div>
 </section>
 {% endblock %}

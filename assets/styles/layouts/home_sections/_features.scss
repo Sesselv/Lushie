@@ -1,26 +1,15 @@
 .sec-features {
     .container {
-        display: flex;
-        gap: 10rem;
+        @media (max-width: 1200px) {
+            flex-direction: column;
+            gap: 5rem;
+            align-items: center;
+            text-align: center;
+        }
 
         h2 {
-            max-width: 50rem;
-            text-align: center;
-
-            span {
-                display: inline-block;
-                position: relative;
-                z-index: 1;
-                // &::after {
-                //     content: "";
-                //     position: absolute;
-                //     top: 0.3125rem;
-                //     z-index: -1;
-                //     right: 0;
-                //     width: 20rem;
-                //     height: 80%;
-                //     background: var(--sunny-cream);
-                // }
+            @media (max-width: 800px) {
+                font-size: 1.8rem;
             }
         }
 
@@ -28,42 +17,101 @@
             display: flex;
             flex-direction: row;
             gap: 5rem;
+            padding: 2rem;
+            @media (max-width: 1200px) {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
+            }
 
             .feature-box {
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
+                align-self: flex-start;
                 gap: 1rem;
                 width: 20rem;
                 border-radius: 1rem;
                 padding: 2rem;
+                margin-top: 3rem;
                 box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.15),
                     0 1.5px 4px 0 rgba(0, 0, 0, 0.1);
 
-                h2 {
-                    font-size: 1.5rem;
+                @media (max-width: 800px) {
+                    width: 100%;
+                    max-width: 22rem;
+                    padding: 1rem 1.5rem;
+                    text-align: center;
+                    align-self: center;
+                    align-items: center;
                 }
 
                 .feature-icon {
-                    display: flex;
+                    display: inline-flex;
+                    align-items: center;
                     justify-content: center;
                     font-size: 3rem;
                     background-color: var(--white);
-                    max-width: 5rem;
+                    width: 5rem;
+                    height: 5rem;
                     border-radius: 50%;
                     border: 1px solid var(--black);
+                    margin-bottom: 1rem;
+
+                    @media (max-width: 800px) {
+                        width: 4rem;
+                        height: 4rem;
+                        font-size: 2.5rem;
+                    }
+                }
+
+                h2 {
+                    font-size: 1.5rem;
+                    text-align: left;
+                    margin: 0;
+
+                    @media (max-width: 800px) {
+                        font-size: 1.3rem;
+                    }
+                }
+
+                .toggle-btn {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    border: none;
+                    background: none;
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    color: var(--black);
+                    line-height: 1;
+
+                    @media (max-width: 800px) {
+                        font-size: 1.5rem;
+                    }
                 }
 
                 .feature-content {
                     display: none;
+                    margin-top: 1rem;
+                }
+
+                &.open .feature-content,
+                &.active .feature-content {
+                    display: block;
                 }
 
                 &.comparator {
                     background-color: var(--soft-purple);
                 }
+
                 &.soaps {
                     background-color: var(--sky-mist);
                 }
+
                 &.exchange {
                     background-color: var(--blush-breeze);
                 }

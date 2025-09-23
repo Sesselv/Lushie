@@ -1,5 +1,7 @@
 .sec-soaps_page {
     background: var(--soft-purple);
+    flex: 1;
+
     .container {
         display: flex;
         align-items: center;
@@ -18,6 +20,16 @@
             gap: 3rem;
             padding-top: 5rem;
             row-gap: 10rem;
+
+            /* Tablette : 2 colonnes */
+            @media (max-width: 1200px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Mobile : 1 colonne */
+            @media (max-width: 800px) {
+                grid-template-columns: 1fr;
+            }
 
             .card-link {
                 text-decoration: none;
@@ -45,6 +57,7 @@
                     height: 200px;
                     overflow: hidden;
                     padding: 0.5rem;
+
                     img {
                         max-width: 18rem;
                     }

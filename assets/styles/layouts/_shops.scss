@@ -1,0 +1,57 @@
+.sec-page-shops {
+    padding: 2rem 0;
+    min-height: 100vh;
+
+    .container {
+        padding: 5rem;
+        margin: 0 auto;
+
+        h2 {
+            text-align: center;
+            padding: 5rem;
+            padding-bottom: 10rem;
+            font-size: 3rem;
+
+            color: #333;
+        }
+
+        .shop-logos {
+            display: grid;
+            gap: 5rem;
+            grid-template-columns: repeat(3, 1fr);
+            @media (max-width: 900px) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            @media (max-width: 530px) {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                img {
+                    width: 15rem;
+                    height: auto;
+                    margin-bottom: 1rem;
+                }
+
+                h1 {
+                    font-size: 1.2rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

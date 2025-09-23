@@ -25,4 +25,29 @@ return [
     '@hotwired/turbo' => [
         'version' => '7.3.0',
     ],
+
+
+
+    // JS
+    'comparator' => [
+        'path' => './assets/js/comparator.js',
+    ],
+    'animatedBar' => [
+        'path' => './assets/js/animatedBar.js',
+    ],
+    'burger' => [
+        'path' => './assets/js/burger.js',
+    ],
+    'card' => [
+        'path' => './assets/js/card.js',
+    ],
+    'comment' => [
+        'path' => './assets/js/comment.js',
+    ],
+    'dropdown' => [
+        'path' => './assets/js/dropdown.js',
+    ],
+    'ratings' => [
+        'path' => './assets/js/ratings.js',
+    ],
 ];

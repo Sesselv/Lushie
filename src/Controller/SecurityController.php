@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,4 +32,3 @@ class SecurityController extends AbstractController
         throw new \LogicException('Cette méthode peut rester vide, le firewall gère la déconnexion.');
     }
 }
-?>

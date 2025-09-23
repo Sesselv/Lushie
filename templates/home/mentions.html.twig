@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %} {% block title %}Lushie - Mentions légales{%
+endblock %} {% block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %}{% block body %}
+
+<section class="legal">
+    <div class="container">
+        <h1>Mentions légales</h1>
+
+        <h2>Éditeur du site</h2>
+        <p>
+            Nom : Selvi Bekar<br />
+            Adresse e-mail :
+            <a href="mailto:selvibekar28@gmail.com">selvibekar28@gmail.com</a
+            ><br />
+            Statut : Site personnel développé dans le cadre d’un projet d’examen
+            / formation. Site non commercial.
+        </p>
+
+        <h2>Responsable de la publication</h2>
+        <p>
+            Selvi Bekar —
+            <a href="mailto:selvibekar28@gmail.com">selvibekar28@gmail.com</a>
+        </p>
+
+        <h2>Hébergement</h2>
+        <p>
+            Le site est actuellement en développement dans le cadre d’un projet
+            étudiant et n’est pas encore hébergé publiquement.<br />
+            Dès que le site sera hébergé, les informations relatives à
+            l’hébergeur (nom, adresse, téléphone) seront ajoutées ici.
+        </p>
+
+        <h2>Description du site</h2>
+        <p>
+            Le site est une plateforme communautaire autour des savons : fiches
+            produits (cartes), comparateur, articles, espace de partage
+            d’astuces et d’expériences, fonctionnalités d’inscription (compte
+            utilisateur), commentaires, notation et favoris. Le site n’est pas
+            une boutique en ligne.
+        </p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>
+            Tous les contenus publiés sur ce site sont la propriété de leur
+            auteur respectif. Toute reproduction, représentation, modification
+            ou adaptation, totale ou partielle, de tout contenu est interdite
+            sans autorisation préalable.
+        </p>
+
+        <h2>Responsabilité</h2>
+        <p>
+            Les informations publiées sont fournies à titre informatif dans le
+            cadre d’un projet étudiant. L’auteure décline toute responsabilité
+            en cas d’utilisation de ces informations. Les avis et contributions
+            des utilisateurs sont de leur seule responsabilité.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+            Pour toute question :
+            <a href="mailto:selvibekar28@gmail.com">selvibekar28@gmail.com</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

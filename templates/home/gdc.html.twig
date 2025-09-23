@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %} {% block title %}Lushie - Gestion des cookies{%
+endblock %} {% block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %}{% block body %}
+<section class="legal">
+    <div class="container">
+        <h1>Gestion des cookies</h1>
+
+        <p>
+            Ce site utilise des cookies pour garantir son bon fonctionnement et
+            améliorer votre expérience. Certains cookies sont indispensables,
+            d’autres nécessitent votre consentement.
+        </p>
+
+        <h2>Cookies utilisés</h2>
+        <ul>
+            <li>
+                <strong>Cookies nécessaires :</strong> session (authentification
+                et navigation sécurisée)
+            </li>
+            <li>
+                <strong>Cookies fonctionnels :</strong> préférences utilisateur
+                (ex. thème)
+            </li>
+            <li>
+                <strong>Cookies analytiques (optionnels) :</strong> mesure
+                d’audience (Google Analytics, Matomo, etc. si activé)
+            </li>
+        </ul>
+
+        <h2>Consentement</h2>
+        <p>
+            Lors de votre première visite, une bannière vous permet d’accepter,
+            refuser ou personnaliser vos choix. Vous pouvez modifier vos
+            préférences à tout moment via le lien “Gérer mes cookies” disponible
+            en bas de page.
+        </p>
+
+        <h2>Vos choix</h2>
+        <ul>
+            <li>
+                <strong>Accepter :</strong> tous les cookies (hors publicitaires
+                si non utilisés)
+            </li>
+            <li>
+                <strong>Refuser :</strong> uniquement les cookies indispensables
+                sont actifs
+            </li>
+            <li>
+                <strong>Paramétrer :</strong> vous choisissez cookie par cookie
+            </li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

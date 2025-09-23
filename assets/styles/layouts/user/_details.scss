@@ -1,0 +1,197 @@
+.sec-details {
+    min-height: 100vh;
+    padding: 5rem;
+    background: var(--soft-purple);
+    flex: 1;
+
+    .container {
+        max-width: 80rem;
+        margin: 0 auto;
+
+        h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        table {
+            border: 2px solid black;
+            background: var(--white);
+
+            thead {
+                tr {
+                    th {
+                        padding: 1rem;
+                        text-align: left;
+                        font-weight: 700;
+                        font-size: 1.5rem;
+                    }
+                    td {
+                        padding: 1rem;
+                    }
+                }
+            }
+
+            tbody {
+                border: 2px solid black;
+                td {
+                    padding: 1rem;
+                }
+                .buttons {
+                    display: flex;
+                    flex-direction: row;
+                }
+                tr {
+                    a {
+                        color: black;
+                        font-weight: 600;
+                        text-decoration: none;
+                    }
+                }
+                button {
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 2rem;
+                    border: 1px solid var(--black);
+                    background: var(--sunny-cream);
+                    cursor: pointer;
+                    margin: 0rem 1rem;
+
+                    &:hover {
+                        background: rgb(224, 108, 131);
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+.sec-details {
+    min-height: 100vh;
+    padding: 5rem;
+    background: var(--soft-purple);
+    flex: 1;
+
+    .container {
+        max-width: 80rem;
+        margin: 0 auto;
+
+        h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        table {
+            border: 2px solid black;
+            background: var(--white);
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                tr {
+                    th {
+                        padding: 1rem;
+                        text-align: left;
+                        font-weight: 700;
+                        font-size: 1.5rem;
+                    }
+                    td {
+                        padding: 1rem;
+                    }
+                }
+            }
+
+            tbody {
+                border: 2px solid black;
+
+                td {
+                    padding: 1rem;
+                }
+
+                .buttons {
+                    display: flex;
+                    flex-direction: row;
+                }
+
+                tr {
+                    a {
+                        color: black;
+                        font-weight: 600;
+                        text-decoration: none;
+                    }
+                }
+
+                button {
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 2rem;
+                    border: 1px solid var(--black);
+                    background: var(--sunny-cream);
+                    cursor: pointer;
+                    margin: 0rem 1rem;
+
+                    &:hover {
+                        background: rgb(224, 108, 131);
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+        padding: 2rem;
+
+        .container {
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+
+                thead {
+                    display: none; /* cacher l’en-tête pour mobile */
+                }
+
+                tbody {
+                    tr {
+                        display: block;
+                        margin-bottom: 1.5rem;
+                        border: 1px solid #ccc;
+                        border-radius: 0.5rem;
+                        overflow: hidden;
+
+                        td {
+                            display: flex;
+                            padding: 0.8rem;
+                            border-bottom: 1px solid #eee;
+                            align-items: center;
+                            text-align: center;
+
+                            &:last-child {
+                                border-bottom: none;
+                            }
+
+                            &::before {
+                                content: attr(data-label);
+                                font-weight: 600;
+                                margin-right: 1rem;
+                                color: #333;
+                            }
+                        }
+
+                        .buttons {
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            gap: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

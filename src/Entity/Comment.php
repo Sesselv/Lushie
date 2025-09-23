@@ -39,6 +39,7 @@ class Comment
     public function __construct()
     {
         $this->reactions = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

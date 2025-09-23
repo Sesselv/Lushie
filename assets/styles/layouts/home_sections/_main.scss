@@ -6,6 +6,7 @@
 }
 html {
     width: 100%;
+    overflow-x: hidden;
 }
 body {
     position: relative;
@@ -28,6 +29,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: 15rem;
+
+    @media (max-width: 800px) {
+        gap: 8rem;
+    }
 }
 
 section,
@@ -47,6 +52,27 @@ section,
         gap: 2rem;
         max-width: 75rem;
         width: 100%;
+    }
+}
+
+span.highlight-white {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.4);
+
+    @media (max-width: 1200px) {
+        padding: 0.15rem 0.3rem;
+    }
+}
+
+span.highlight-sunny {
+    background: var(--sunny-cream);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+
+    @media (max-width: 800px) {
+        padding: 0.15rem 0.4rem;
     }
 }
 

@@ -6,7 +6,9 @@ use App\Entity\Media;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Entity\Favorite;
+use App\Entity\Reaction;
 use App\Form\ArticleType;
+use App\Form\CommentType;
 use App\Form\UserProfileType;
 use App\Repository\UserRepository;
 use App\Repository\MediaRepository;
@@ -17,6 +19,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -103,7 +106,7 @@ final class UserController extends AbstractController
 
             // Gestion de la photo de profil
             if ($photo = $form->get('photo')->getData()) {
-                $filename = 'user_' . $user->getId() . '.' . $photo->guessExtension();
+                $filename = 'user_' . $user->getUserIdentifier() . '_' . uniqid() . '.' . $photo->guessExtension();
                 $photo->move($this->getParameter('uploads_users_directory'), $filename);
 
                 $media = $mediaRepo->findOneBy(['user' => $user]) ?? new Media();
@@ -195,11 +198,58 @@ final class UserController extends AbstractController
     ///////////////////////////////////////////////////////////////////
 
     #[Route('/article/{id}', name: 'app_article_show')]
-    public function show(Article $article): Response
-    {
-        // L'article est injecté automatiquement via ParamConverter
+    public function show(
+        Article $article,
+        Request $request,
+        EntityManagerInterface $em,
+        CommentRepository $commentRepository
+    ): Response {
+        // Créer un nouveau commentaire
+        $comment = new Comment();
+
+        // Créer le formulaire
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        // Traitement du formulaire
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setUser($this->getUser());
+            $comment->setArticle($article);
+            $comment->setCreatedAt(new \DateTimeImmutable());
+            $em->persist($comment);
+            $em->flush();
+
+            // Si c'est une requête AJAX, retourner JSON
+            if ($request->isXmlHttpRequest()) {
+                // Récupérer les commentaires mis à jour
+                $comments = $commentRepository->findBy(['article' => $article], ['createdAt' => 'DESC']);
+
+                return new JsonResponse([
+                    'success' => true,
+                    'message' => 'Commentaire ajouté avec succès',
+                    'comment' => [
+                        'id' => $comment->getId(),
+                        'content' => $comment->getContent(),
+                        'username' => $comment->getUser()->getUsername(),
+                        'createdAt' => $comment->getCreatedAt()->format('d/m/Y'),
+                        'userPhoto' => $comment->getUser()->getMedia()->first() ?
+                            '/uploads/users/' . $comment->getUser()->getMedia()->first()->getFilePath() :
+                            '/images/pp.png'
+                    ],
+                    'totalComments' => count($comments)
+                ]);
+            }
+
+            return $this->redirectToRoute('app_article_show', ['id' => $article->getId()]);
+        }
+
+        // Récupérer tous les commentaires pour cet article
+        $comments = $commentRepository->findBy(['article' => $article], ['createdAt' => 'DESC']);
+
         return $this->render('articles/show.html.twig', [
             'article' => $article,
+            'comments' => $comments,
+            'form' => $form->createView(), // <-- ceci fixe l'erreur Twig
         ]);
     }
 
@@ -245,6 +295,11 @@ final class UserController extends AbstractController
             throw $this->createAccessDeniedException('Vous devez être connecté.');
         }
 
+        if ($comment->getUser() !== $user) {
+            throw $this->createAccessDeniedException('Vous ne pouvez pas supprimer ce commentaire.');
+        }
+
+
         if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
             $em->remove($comment);
             $em->flush();
@@ -287,10 +342,5 @@ final class UserController extends AbstractController
     }
     //////////////////////////////////////////////////////////////////
 
-    #[Route('/logout', name: 'app_logout')]
-    public function logout(): void
-    {
-        // cette méthode peut rester vide, elle sera interceptée par Symfony
-        throw new \LogicException('Cette méthode est interceptée par le firewall de Symfony.');
-    }
+
 }

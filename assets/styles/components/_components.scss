@@ -16,7 +16,7 @@
         text-align: left;
         gap: 1rem;
         background: var(--white);
-        max-width: 23rem;
+        max-width: 23rem; // style desktop intact
         height: 38rem;
         padding: 2rem;
         border-radius: 1rem;
@@ -35,6 +35,7 @@
             font-size: 1.5rem;
             padding-top: 2rem;
         }
+
         .fav-icon {
             cursor: pointer;
             fill: none;
@@ -49,6 +50,58 @@
 
         .rating-static {
             display: flex;
+        }
+    }
+
+    @media (max-width: 1060px) and (min-width: 500px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+
+        .card {
+            max-width: 20rem;
+            height: fit-content;
+
+            h2 {
+                padding-top: 1rem;
+            }
+
+            img {
+                max-width: 12rem;
+            }
+
+            p {
+                max-width: 16rem;
+                font-size: 1rem;
+            }
+        }
+        .card:nth-child(3) {
+            display: none;
+        }
+    }
+    @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        .card {
+            max-width: 100%;
+            height: auto;
+
+            img {
+                max-width: 10rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                padding-top: 1rem;
+            }
+
+            p {
+                max-width: 100%;
+                font-size: 0.95rem;
+            }
+        }
+        .card:nth-child(3) {
+            display: none;
         }
     }
 }

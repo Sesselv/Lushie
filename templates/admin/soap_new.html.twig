@@ -1,0 +1,20 @@
+{% extends 'baseAdmin.html.twig' %} {% block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %} {% block body %}
+<section class="sec-admin-soaps">
+    <div class="container">
+        <h1>Créer un nouveau savon</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit">Ajouter</button>
+            {{ form_end(form) }}
+        </form>
+
+        <a href="{{ path('app_admin_soaps') }}" class="btn-back"
+            >Retour à la liste</a
+        >
+    </div>
+</section>
+{% endblock %}

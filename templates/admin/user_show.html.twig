@@ -1,0 +1,69 @@
+{% extends 'baseAdmin.html.twig' %} {% block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %}{% block body %}
+<section class="sec-user-detail">
+    <div class="container">
+        <h1>Détails de {{ user.username }}</h1>
+        <p>Email : {{ user.email }}</p>
+
+        <h2>Articles créés</h2>
+        {% if articles is empty %}
+        <p>Aucun article.</p>
+        {% else %}
+        <ul>
+            {% for article in articles %}
+            <li>
+                {{ article.title }}
+                <div class="buttons">
+                    <a href="{{ path('app_article_show', { id: article.id }) }}"
+                        >Voir</a
+                    >
+                    <a
+                        href="{{
+                            path('admin_delete_article', { id: article.id })
+                        }}"
+                        >Supprimer</a
+                    >
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <h2>Commentaires publiés</h2>
+        {% if comments is empty %}
+        <p>Aucun commentaire.</p>
+        {% else %}
+        <ul>
+            {% for comment in comments %}
+            <li>
+                {{ comment.content }}
+                <div class="buttons">
+                    <a
+                        href="{{
+                            path('app_article_show', { id: comment.article.id })
+                        }}"
+                        >Voir</a
+                    >
+                    <a
+                        href="{{
+                            path('admin_delete_comment', { id: comment.id })
+                        }}"
+                        >Supprimer</a
+                    >
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <h2>Supprimer l’utilisateur</h2>
+        <form
+            method="post"
+            action="{{ path('admin_delete_user', { id: user.id }) }}"
+        >
+            <button type="submit">Supprimer l’utilisateur</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

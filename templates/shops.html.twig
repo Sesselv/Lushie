@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %} {% block title %}Lushie - Les boutiques{%
+endblock %} {% block body %}
+<section class="sec-page-shops">
+    <div class="container">
+        <h2>Les boutiques conseillées</h2>
+        <div class="shop-logos">
+            <a href="https://www.la-corvette.com" target="_blank">
+                <img
+                    src="{{ asset('/styles/img/shops/lacorvette.webp') }}"
+                    alt="La Corvette"
+                />
+                <h1>La Corvette</h1>
+            </a>
+            <a href="https://www.lavieclaire.com" target="_blank">
+                <img
+                    src="{{ asset('/styles/img/shops/lavieclaire.webp') }}"
+                    alt="La Vie Claire"
+                />
+                <h1>La Vie Claire</h1>
+            </a>
+            <a href="https://www.natureetdecouverte.com" target="_blank">
+                <img
+                    src="{{
+                        asset('/styles/img/shops/natureetdecouverte.webp')
+                    }}"
+                    alt="Nature et Découverte"
+                />
+                <h1>Nature et Découverte</h1>
+            </a>
+            <a href="https://www.gaia.fr" target="_blank">
+                <img
+                    src="{{ asset('/styles/img/shops/gaia.webp') }}"
+                    alt="Gaiia"
+                />
+                <h1>Gaiia</h1>
+            </a>
+            <a href="https://www.aroma-zone.com" target="_blank">
+                <img
+                    src="{{ asset('/styles/img/shops/aromazone.webp') }}"
+                    alt="Aroma-Zone"
+                />
+                <h1>Aroma-Zone</h1>
+            </a>
+            <a href="https://www.feracheval.fr" target="_blank">
+                <img
+                    src="{{ asset('/styles/img/shops/feracheval.webp') }}"
+                    alt="Fer à Cheval"
+                />
+                <h1>Fer à Cheval</h1>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,4 +1,7 @@
-{% extends 'base.html.twig' %} {% block title %}Hello UserController!{% endblock
+{% extends 'base.html.twig' %} 
+{% block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %}{% block title %}Hello UserController!{% endblock
 %} {% block body %}
 <section class="sec-articles">
     <div class="container">

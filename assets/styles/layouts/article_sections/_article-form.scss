@@ -3,6 +3,8 @@
     display: flex;
     justify-content: center;
     background: var(--sunny-cream);
+    flex: 1;
+    min-height: 100vh;
 
     .container {
         .article-form {
@@ -70,7 +72,6 @@
                     font-size: 1rem;
                     font-weight: 600;
                     cursor: pointer;
-                    transition: background 0.2s ease;
 
                     &:hover {
                         background: var(--sunny-cream);
@@ -78,6 +79,39 @@
 
                     &:active {
                         background: var(--sunny-cream);
+                    }
+                }
+            }
+        }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+        padding: 5rem 2rem;
+
+        .container {
+            .article-form {
+                padding: 1.5rem;
+                border-radius: 0.5rem;
+
+                h1 {
+                    font-size: 1.5rem;
+                    padding: 1rem;
+                }
+
+                form {
+                    gap: 2rem;
+
+                    input,
+                    textarea,
+                    select {
+                        font-size: 0.9rem;
+                    }
+
+                    button[type="submit"] {
+                        width: 100%; /* plus pratique sur mobile */
+                        text-align: center;
+                        padding: 0.8rem;
                     }
                 }
             }

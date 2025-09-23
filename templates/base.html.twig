@@ -1,76 +1,132 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <title>{% block title %}{% endblock %}</title>
-         <meta name="description" content="{% block meta_description %}Découvrez Lushie, un univers doux et coloré autour des savons, avec conseils, comparateur et avis.{% endblock %}">
-         <meta name="csrf-token" content="{{ csrf_token('authenticate') }}">
-         <script>
-    const SOAP_RATE_URL = '{{ path("soap_rate") }}';
-</script>
-<script src="{{ asset('js/rating.js') }}"></script>
-
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('/styles/app.css') }}">
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="{% block meta_description %}Découvrez Lushie...{% endblock %}"
+        />
+        <meta name="csrf-token" content="{{ csrf_token('authenticate') }}" />
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {{ importmap("app") }}
+        {% endblock %}
+
+        <script>
+            const SOAP_RATE_URL = '{{ path("soap_rate") }}';
+        </script>
+
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/styles/app.css') }}" />
         {% endblock %}
     </head>
     <body>
         <header class="section">
             {% block header %}
             <div class="container">
-         
-                    <img class="logo" src="{{ asset('/styles/img/logo-lush.svg') }}" alt="Lushie logo">
-                    <div class="nav">
-                        <ul class="nav-list">
-                            <li class="nav-item"><a href="{{ path('app_home') }}">Accueil</a></li>
-                            <li class="nav-item"><a href="{{ path('app_soaps') }}">Les savons</a></li>
-                            <li class="nav-item"><a href="">Le comparateur</a></li>
-                              <li class="nav-item"><a href="{{ path('app_articles') }}">Espace échange</a></li>
-                       <li class="nav-item">
-    {% if app.user %}
-        <a href="{{ path('app_user_dashboard')}}">
-            <img class="profil-icon" src="{{ asset('styles/img/profil-icon.svg') }}" alt="icon profil">
-            Mon espace
-        </a>
-    {% else %}
-        <a href="{{ path('app_login') }}">
-            <img class="profil-icon" src="{{ asset('styles/img/profil-icon.svg') }}" alt=" icon profil">
-            Se connecter
-        </a>
-    {% endif %}
-</li>
-
-                        </ul>
-                    </div>
+                <img
+                    class="logo"
+                    src="{{ asset('/styles/img/logo-lush.svg') }}"
+                    alt="Lushie logo"
+                />
+                <button class="burger" aria-label="Menu">&#9776;</button>
+                <div class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="{{ path('app_home') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_soaps') }}">Les savons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('soap_comparator') }}"
+                                >Le comparateur</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_articles') }}"
+                                >Espace échange</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            {% if app.user %} {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('app_admin') }}">
+                                <img
+                                    class="profil-icon"
+                                    src="{{
+                                        asset('styles/img/profil-icon.svg')
+                                    }}"
+                                    alt="icon profil"
+                                />
+                                Mon espace
+                            </a>
+                            {% else %}
+                            <a href="{{ path('app_user_dashboard') }}">
+                                <img
+                                    class="profil-icon"
+                                    src="{{
+                                        asset('styles/img/profil-icon.svg')
+                                    }}"
+                                    alt="icon profil"
+                                />
+                                Mon espace
+                            </a>
+                            {% endif %} {% else %}
+                            <a href="{{ path('app_login') }}">
+                                <img
+                                    class="profil-icon"
+                                    src="{{
+                                        asset('styles/img/profil-icon.svg')
+                                    }}"
+                                    alt=" icon profil"
+                                />
+                                Se connecter
+                            </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
             </div>
             {% endblock %}
         </header>
 
-        <main>
-
-        {% block body %}{% endblock %}
-
-        </main>
+        <main>{% block body %}{% endblock %}</main>
 
         <footer class="section">
-{% block footer %}
+            {% block footer %}
 
-  <div class="container">
-    <div class="col-1">
-      <img class="logo" src="{{ asset('/styles/img/logo-lush.svg') }}"alt="logo Lushie">
-      </div>
-    <div class="col-2">
-     <ul>
-       <li>Mentions légales </li>
-       <li>.... </li>
-     </ul>
-    </div>
- </div>
+            <div class="container">
+                <div class="col-1">
+                    <img
+                        class="logo"
+                        src="{{ asset('/styles/img/logo-lush.svg') }}"
+                        alt="logo Lushie"
+                    />
+                </div>
+                <div class="col-2">
+                    <ul>
+                        <li>
+                            <a href="{{ path('mentions_legales') }}"
+                                >Mentions légales</a
+                            >
+                        </li>
+                        <li>
+                            <a href="{{ path('rgpd') }}"
+                                >Politique de confidentialité</a
+                            >
+                        </li>
+                        <li>
+                            <a href="{{ path('cookies') }}"
+                                >Gestion des cookies</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-{% endblock %}</footer>
+            {% endblock %}
+        </footer>
     </body>
 </html>

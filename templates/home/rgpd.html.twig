@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %} {% block title %}Lushie - RGPD{% endblock %} {%
+block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %} {% block body %}
+
+<section class="legal">
+    <div class="container">
+        <h1>Politique de confidentialité</h1>
+
+        <p>
+            Cette politique décrit la manière dont vos données personnelles sont
+            collectées, utilisées et protégées dans le cadre de ce site
+            développé par Selvi Bekar (site personnel étudiant).
+        </p>
+
+        <h2>Délégué à la protection des données</h2>
+        <p>
+            Aucun DPO nommé. Contact :
+            <a href="mailto:selvibekar28@gmail.com">selvibekar28@gmail.com</a>
+        </p>
+
+        <h2>Données collectées</h2>
+        <ul>
+            <li>
+                Email, mot de passe (chiffré), pseudo (obligatoires à
+                l’inscription)
+            </li>
+            <li>Photo de profil (optionnelle)</li>
+            <li>Commentaires, articles, notes, favoris</li>
+            <li>Données techniques (adresse IP, logs de connexion)</li>
+        </ul>
+
+        <h2>Finalités du traitement</h2>
+        <ul>
+            <li>Authentification et gestion des comptes utilisateurs</li>
+            <li>Affichage des profils et contributions</li>
+            <li>
+                Gestion des fonctionnalités sociales (commentaires, favoris,
+                notation)
+            </li>
+            <li>Sécurité du site et prévention des abus</li>
+        </ul>
+
+        <h2>Base légale</h2>
+        <p>
+            Exécution du service (compte utilisateur), consentement (cookies /
+            services optionnels), intérêt légitime (sécurité).
+        </p>
+
+        <h2>Durée de conservation</h2>
+        <p>
+            Les données sont conservées tant que le compte est actif. Les
+            comptes supprimés entraînent la suppression ou anonymisation des
+            données sous 30 jours. Les logs techniques sont conservés pendant
+            une durée limitée (ex. 6 mois).
+        </p>
+
+        <h2>Sécurité</h2>
+        <p>
+            Les mots de passe sont stockés de manière sécurisée (hachage fort).
+            Les fichiers (photos de profil) sont vérifiés avant enregistrement.
+            L’accès aux données est restreint.
+        </p>
+
+        <h2>Partage avec des tiers</h2>
+        <p>
+            Aucun partage commercial. Les prestataires techniques (hébergeur,
+            outils d’analyse si activés) peuvent avoir accès à certaines données
+            techniques.
+        </p>
+
+        <h2>Vos droits</h2>
+        <ul>
+            <li>Droit d’accès, rectification, effacement</li>
+            <li>Droit à la limitation, opposition, portabilité</li>
+            <li>
+                Pour exercer vos droits :
+                <a href="mailto:selvibekar28@gmail.com"
+                    >selvibekar28@gmail.com</a
+                >
+            </li>
+        </ul>
+
+        <h2>Mineurs</h2>
+        <p>
+            Le site est destiné aux personnes majeures. Si vous êtes mineur,
+            demandez l’autorisation parentale.
+        </p>
+    </div>
+</section>
+{% endblock %}

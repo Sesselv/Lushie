@@ -5,7 +5,7 @@
         align-items: center;
         text-align: center;
         gap: 5rem;
-        max-width: 50rem;
+        max-width: 55rem;
         background-color: var(--sky-mist);
         padding: 3rem;
         padding-top: 5rem;
@@ -14,7 +14,12 @@
 
         h2 {
             font-size: 2rem;
+
+            @media (max-width: 800px) {
+                font-size: 1.6rem;
+            }
         }
+
         .exchange-content {
             display: flex;
             flex-direction: row;
@@ -22,16 +27,37 @@
             align-items: center;
             gap: 2rem;
 
+            @media (max-width: 800px) {
+                flex-direction: column;
+                text-align: center;
+            }
+
             .col-1 {
                 max-width: 50%;
                 text-align: left;
                 font-weight: 500;
+
+                @media (max-width: 800px) {
+                    max-width: 50rem;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 0.95rem;
+                }
             }
+
             .col-2 {
                 max-width: 50%;
 
+                @media (max-width: 800px) {
+                    max-width: 100%;
+                }
+
                 .exchange-img {
                     width: 15rem;
+
+                    @media (max-width: 800px) {
+                        width: 10rem;
+                    }
                 }
             }
         }

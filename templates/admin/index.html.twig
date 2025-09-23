@@ -1,8 +1,10 @@
-{% extends 'baseAdmin.html.twig' %}  {% block body %}
-<section class="sec-dashboard">
+{% extends 'baseAdmin.html.twig' %} {% block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %}{% block body %}
+<section class="sec-admin">
     <div class="container">
-        <h1>Mon dashboard</h1>
-        <p>Contenu centré</p>
+        <h1>Bienvenue sur votre dashboard Admin !🤩</h1>
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
     </div>
 </section>
 {% endblock %}

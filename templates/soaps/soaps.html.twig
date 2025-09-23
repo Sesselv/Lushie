@@ -1,4 +1,6 @@
-{% extends 'base.html.twig' %} {% block body %}
+{% extends 'base.html.twig' %} {% block importmap %}
+{{ importmap(["app", "burger"]) }}
+{% endblock %} {% block body %}
 <section class="sec-soaps_page">
     <div class="container">
         <h1>TOUT LES SAVONS</h1>

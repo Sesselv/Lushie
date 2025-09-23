@@ -19,6 +19,8 @@
 
 @use "layouts/admin/dashboard";
 @use "layouts/admin/admin_soaps";
+@use "layouts/admin/user_show";
+@use "layouts/admin/users";
 
 ///////////////////////////
 @use "layouts/soap_sections/soap_page";
@@ -26,6 +28,7 @@
 
 ///////////////////////////
 @use "layouts/user/sec_dashboard";
+@use "layouts/user/details";
 ///////////////////////////
 @use "layouts/article_sections/article-form";
 @use "layouts/article_sections/article_page";
@@ -33,3 +36,5 @@
 
 ///////////////////////////
 @use "layouts/comparateur";
+@use "layouts/legal";
+@use "layouts/shops";

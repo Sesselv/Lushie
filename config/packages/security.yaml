@@ -26,7 +26,7 @@ security:
             form_login: # ajout du formulaire de login
                 login_path: app_login
                 check_path: app_login
-                default_target_path: /admin
+                default_target_path: app_home
                 username_parameter: _username
                 password_parameter: _password
 

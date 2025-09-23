@@ -1,140 +1,178 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
+{% extends 'base.html.twig' %} {% block importmap %}
+{{ importmap(["app", "rating", "burger"]) }}
+{% endblock %} {% block body %}
 <section class="sec-soap_page">
     <div class="container">
-
         <div class="top">
             <h1>{{ soap.name }}</h1>
 
             {% set totalRatings = soap.ratings|length %}
 
-            
-
             <div class="rating-static">
-            <p>{{ totalRatings }}</p>
+                <p>{{ totalRatings }}</p>
                 {% for i in 1..5 %}
-                    <span class="star {% if i <= average %}active{% endif %}">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="currentColor"/>
-                        </svg>
-                    </span>
+                <span class="star {% if i <= average %}active{% endif %}">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                    >
+                        <polygon
+                            points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"
+                            fill="currentColor"
+                        />
+                    </svg>
+                </span>
                 {% endfor %}
             </div>
         </div>
 
         <div class="soap-images">
-            {% if soap.media|length > 0 %}
-                {% for image in soap.media %}
-                    <img src="{{ asset('uploads/soaps/' ~ image.filePath) }}" alt="{{ soap.name }}" />
-                {% endfor %}
-            {% else %}
-                <img src="{{ asset('/styles/img/default-soap.webp') }}" alt="{{ soap.name }}" />
+            {% if soap.media|length > 0 %} {% for image in soap.media %}
+            <img
+                src="{{ asset('uploads/soaps/' ~ image.filePath) }}"
+                alt="{{ soap.name }}"
+            />
+            {% endfor %} {% else %}
+            <img
+                src="{{ asset('/styles/img/default-soap.webp') }}"
+                alt="{{ soap.name }}"
+            />
             {% endif %}
         </div>
 
-       <div class="actions">
+        <div class="actions">
+            {# --- Favorite (Bookmark) --- #} {% set isFavorite = false %} {% if
+            app.user %} {% for fav in app.user.favorite %} {% if fav.soap.id ==
+            soap.id %} {% set isFavorite = true %} {% endif %} {% endfor %}
 
-
-    {# --- Favorite (Bookmark) --- #}
-    {% set isFavorite = false %}
-    {% if app.user %}
-        {% for fav in app.user.favorite %}
-            {% if fav.soap.id == soap.id %}
-                {% set isFavorite = true %}
-            {% endif %}
-        {% endfor %}
-
-        <form action="{{ path('toggle_favorite', {'id': soap.id}) }}" method="POST" style="display:inline">
-            <button type="submit" class="fav-icon {% if isFavorite %}active{% endif %}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
-                    <path d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z"/>
-                </svg>
-            </button>
-        </form>
-    {% else %}
-        <a href="{{ path('app_login') }}" class="fav-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
-                <path d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z"/>
-            </svg>
-        </a>
-    {% endif %}
-
-</div>
-
-
-        <div class="description">
-        {% if soap.description %}
-            <h2>🧼Description</h2>
-            <p>{{ soap.description }}</p>
-        {% endif %}
-        </div>
-
-        <div class="list-container">
-
-       <div class="col-1">
-        {% if soap.benefits %}
-            <h2>🌿Bienfaits</h2>
-            <p>{{ soap.benefits }}</p>
-        {% endif %}
-      </div>
-       <div class="col-2">
-        {% if soap.precautions %}
-            <h2>⚠️Précautions</h2>
-            <p>{{ soap.precautions }}</p>
-        {% endif %}
-       </div>
-
-        </div>
-<div class="usage-time">
-        {% if soap.usageTime %}
-            <h2>🕛Quand utiliser?</h2>
-            <p>{{ soap.usageTime }}</p>
-        {% endif %}
-        </div>
-   
-
-    <div class="note">
-            <div class="rating-static">
-            <p>{{ totalRatings }}</p>
-                {% for i in 1..5 %}
-                    <span class="star {% if i <= average %}active{% endif %}">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="currentColor"/>
-                        </svg>
-                    </span>
-                {% endfor %}
-            </div>
-    
-    <div class="rating" data-soap-id="{{ soap.id }}">
-    <h2>Laissez une note !</h2>
-    <div class="stars">
-    {% set userRating = app.user ? soap.ratings|filter(r => r.user.id == app.user.id)|first : null %}
-    {% set userNote = userRating ? userRating.note : 0 %}
-
-    {% for i in 1..5 %}
-        {% if app.user %}
-            {# Utilisateur connecté → note normale #}
-            <form action="{{ path('soap_rate') }}" method="POST" style="display:inline">
-                <input type="hidden" name="soapId" value="{{ soap.id }}">
-                <button type="submit" name="note" value="{{ i }}" class="star {% if i <= userNote %}active{% endif %}">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="currentColor"/>
+            <form
+                action="{{ path('toggle_favorite', { id: soap.id }) }}"
+                method="POST"
+                style="display: inline"
+            >
+                <button
+                    type="submit"
+                    class="fav-icon {% if isFavorite %}active{% endif %}"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z"
+                        />
                     </svg>
                 </button>
             </form>
-        {% else %}
-            <a href="{{ path('app_login') }}" class="star" style="color: gray;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" fill="currentColor"/>
+            {% else %}
+            <a href="{{ path('app_login') }}" class="fav-icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M6 2a2 2 0 0 0-2 2v18l8-5.33L20 22V4a2 2 0 0 0-2-2H6z"
+                    />
                 </svg>
             </a>
-        {% endif %}
-    {% endfor %}
-    </div>
-    </div>
-</div>
+            {% endif %}
+        </div>
 
+        <div class="description">
+            {% if soap.description %}
+            <h2>🧼Description</h2>
+            <p>{{ soap.description }}</p>
+            {% endif %}
+        </div>
+        <div class="list-container">
+            <div class="list-row">
+                <div class="col-1">
+                    {% if soap.benefits %}
+                    <h2>🌿Bienfaits</h2>
+                    <ul>
+                        {% for benefit in soap.benefits|split(',') %}
+                        <li>👉{{ benefit | trim }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+                <div class="col-2">
+                    {% if soap.precautions %}
+                    <h2>⚠️Précautions</h2>
+                    <ul>
+                        {% for precaution in soap.precautions|split(',') %}
+                        <li>👉{{ precaution | trim }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-3">
+                {% if soap.usageTime %}
+                <h2>🕛Quand utiliser?</h2>
+                <ul>
+                    {% for usage in soap.usageTime|split(',') %}
+                    <li>👉{{ usage | trim }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="note">
+            <div class="rating" data-soap-id="{{ soap.id }}">
+                <h2>Laissez une note !</h2>
+                <div class="stars">
+                    {% set userRating = app.user ? soap.ratings|filter(r =>
+                    r.user.id == app.user.id)|first : null %} {% set userNote =
+                    userRating ? userRating.note : 0 %} {% for i in 1..5 %} {%
+                    if app.user %}
+                    <span
+                        class="star {% if i <= userNote %}active{% endif %}"
+                        data-value="{{ i }}"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
+                        >
+                            <polygon
+                                points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"
+                                fill="currentColor"
+                            />
+                        </svg>
+                    </span>
+                    {% else %}
+                    <a
+                        href="{{ path('app_login') }}"
+                        class="star"
+                        style="color: gray"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
+                        >
+                            <polygon
+                                points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"
+                                fill="currentColor"
+                            />
+                        </svg>
+                    </a>
+                    {% endif %} {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

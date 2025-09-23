@@ -1,0 +1,151 @@
+.comparator-page {
+    min-height: 100vh;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5rem;
+
+        h1 {
+            padding: 5rem;
+        }
+
+        .soap-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            max-width: 90rem; // augmenter la largeur max
+            width: 100%;
+            gap: 8rem; // plus d'espace entre les colonnes
+            background-color: var(--soft-purple);
+            border: 1px solid black;
+            border-radius: 2rem;
+            padding: 3rem; // plus de padding
+
+            .soap-select {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 20rem; // colonne plus large
+                width: 100%;
+
+                select {
+                    border-radius: 1rem;
+                    width: 100%;
+                    padding: 0.7rem 1.2rem; // select plus grand
+                    font-size: 1.2rem;
+                }
+
+                img {
+                    width: 250px; // agrandir l'image
+                    height: 250px;
+                    object-fit: cover;
+                    margin-top: 1.5rem;
+                    border-radius: 1rem;
+                    border: 1px solid black;
+
+                    &[src=""] {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .compare-btn {
+            background: var(--blush-breeze);
+            font-weight: 600;
+            padding: 0.5rem 2rem;
+            border-radius: 2rem;
+            border: 1px solid black;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+    }
+
+    .comparison-table {
+        margin-top: 2rem;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--sunny-cream);
+        overflow: hidden;
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 900px) {
+    .comparator-page .container {
+        padding: 3rem 2rem;
+
+        h1 {
+            padding: 3rem 1rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .soap-container {
+            flex-direction: column;
+            gap: 3rem;
+            padding: 2rem;
+
+            .soap-select {
+                max-width: 100%;
+
+                img {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+        }
+
+        .comparison-table {
+            font-size: 0.9rem;
+
+            th,
+            td {
+                padding: 0.7rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .comparator-page .container {
+        padding: 1.5rem 0.5rem;
+
+        h1 {
+            padding: 1.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .soap-container {
+            padding: 1rem;
+
+            .soap-select {
+                img {
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+        }
+
+        .comparison-table {
+            font-size: 0.7rem;
+
+            th,
+            td {
+                padding: 0.3rem;
+            }
+        }
+    }
+}

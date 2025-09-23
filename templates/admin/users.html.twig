@@ -1,0 +1,20 @@
+{% extends 'baseAdmin.html.twig' %} {% block javascripts %}
+{{ importmap(["app"]) }}
+{% endblock %} {% block body %}
+<section class="sec-users">
+    <div class="container">
+        <h1>Liste des utilisateurs</h1>
+        <ul>
+            {% for user in users %}
+            <li>
+                <a href="{{ path('admin_user_show', { id: user.id }) }}">
+                    {{ user.userName }} ({{ user.email }})
+                </a>
+            </li>
+            {% else %}
+            <li>Aucun utilisateur trouvé.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

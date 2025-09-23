@@ -4,6 +4,10 @@
     padding: 15rem;
     background: var(--soft-purple);
 
+    @media (max-width: 768px) {
+        padding: 5rem 0rem;
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -14,6 +18,11 @@
         padding: 5rem;
         background-color: var(--sky-mist);
         border: 1px solid black;
+        @media (max-width: 768px) {
+            padding: 1rem;
+            background: none;
+            border: none;
+        }
 
         h1 {
             text-align: center;

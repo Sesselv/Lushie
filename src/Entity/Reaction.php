@@ -21,12 +21,17 @@ class Reaction
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'reactions')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Comment $comment = null;
 
     #[ORM\ManyToOne(inversedBy: 'reactions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {

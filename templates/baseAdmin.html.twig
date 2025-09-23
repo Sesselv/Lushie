@@ -3,12 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Espace Admin - Lushie{% endblock %}</title>
-         <meta name="description" content="{% block meta_description %}Découvrez Lushie, un univers doux et coloré autour des savons, avec conseils, comparateur et avis.{% endblock %}">
-        {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('/styles/app.css') }}" />
-        {% endblock %} {% block javascripts %} {% block importmap %}{{
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="{% block meta_description %}Découvrez Lushie, un univers doux et coloré autour des savons, avec conseils, comparateur et avis.{% endblock %}"
+        />
+        {% block javascripts %}
+        {{
             importmap("app")
-        }}{% endblock %} {% endblock %}
+        }}
+        {% endblock %} {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/styles/app.css') }}" />
+        {% endblock %}
     </head>
     <body>
         <header class="section">
@@ -21,41 +27,16 @@
                 />
                 <div class="nav">
                     <ul class="nav-list">
-                    <li class="nav-item">
-                            <a href="{{ path('app_admin') }}">DASHBOARD</a>
-                    </li>
                         <li class="nav-item">
-                            <a href="{{ path('app_admin_soaps')}}">SAVONS</a>
+                            <a href="{{ path('app_home') }}">Site</a>
                         </li>
                         <li class="nav-item">
-                            <a href="">LES ARTICLES</a>
+                            <a href="{{ path('app_admin_soaps') }}"
+                                >Les savons</a
+                            >
                         </li>
-                        <li class="nav-item"><a href="">LES UTILISATEURS</a></li>
-                        <li class="nav-item"><a href="">LES COMMENTAIRES</a></li>
                         <li class="nav-item">
-                            {% if app.user %}
-                            <a href="#">
-                                <img
-                                    class="profil-icon"
-                                    src="{{
-                                        asset('styles/img/profil-icon.svg')
-                                    }}"
-                                    alt=" icon profil"
-                                />
-                                MON ESPACE
-                            </a>
-                            {% else %}
-                            <a href="{{ path('app_login') }}">
-                                <img
-                                    class="profil-icon"
-                                    src="{{
-                                        asset('styles/img/profil-icon.svg')
-                                    }}"
-                                    alt=" icon profil"
-                                />
-                                Se connecter
-                            </a>
-                            {% endif %}
+                            <a href="{{ path('admin_users') }}">utilisateurs</a>
                         </li>
                     </ul>
                 </div>
@@ -73,13 +54,26 @@
                     <img
                         class="logo"
                         src="{{ asset('/styles/img/logo-lush.svg') }}"
-                        alt=" logo Lushie"
+                        alt="logo Lushie"
                     />
                 </div>
                 <div class="col-2">
                     <ul>
-                        <li>Mentions légales</li>
-                        <li>....</li>
+                        <li>
+                            <a href="{{ path('mentions_legales') }}"
+                                >Mentions légales</a
+                            >
+                        </li>
+                        <li>
+                            <a href="{{ path('rgpd') }}"
+                                >Politique de confidentialité</a
+                            >
+                        </li>
+                        <li>
+                            <a href="{{ path('cookies') }}"
+                                >Gestion des cookies</a
+                            >
+                        </li>
                     </ul>
                 </div>
             </div>
