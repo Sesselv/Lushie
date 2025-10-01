@@ -1,4 +1,9 @@
-{% extends 'base.html.twig' %} {% block importmap %}
+{% extends 'base.html.twig' %} {% block title %}{{ soap.name }} - Détails du
+savon - Lushie{% endblock %} {% block meta_description %}Découvrez le savon
+{{ soap.name }} :
+{{ soap.description|length > 100 ? soap.description|slice(0, 100) ~ "..." : soap.description
+
+}}{% endblock %} {% block importmap %}
 {{ importmap(["app", "rating", "burger"]) }}
 {% endblock %} {% block body %}
 <section class="sec-soap_page">
@@ -97,7 +102,7 @@
                     <h2>🌿Bienfaits</h2>
                     <ul>
                         {% for benefit in soap.benefits|split(',') %}
-                        <li>👉{{ benefit | trim }}</li>
+                        <li>👉{{ benefit | trim(' "') }}</li>
                         {% endfor %}
                     </ul>
                     {% endif %}
@@ -108,7 +113,7 @@
                     <h2>⚠️Précautions</h2>
                     <ul>
                         {% for precaution in soap.precautions|split(',') %}
-                        <li>👉{{ precaution | trim }}</li>
+                        <li>👉{{ precaution | trim(' "') }}</li>
                         {% endfor %}
                     </ul>
                     {% endif %}
@@ -120,7 +125,7 @@
                 <h2>🕛Quand utiliser?</h2>
                 <ul>
                     {% for usage in soap.usageTime|split(',') %}
-                    <li>👉{{ usage | trim }}</li>
+                    <li>👉{{ usage | trim(' "') }}</li>
                     {% endfor %}
                 </ul>
                 {% endif %}

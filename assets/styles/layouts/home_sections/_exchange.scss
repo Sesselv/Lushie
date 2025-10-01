@@ -10,14 +10,11 @@
         padding: 3rem;
         padding-top: 5rem;
         border-radius: 3rem;
-        border: 1px solid var(--black);
+        box-shadow: -5px 0px 35px -8px rgba(0, 0, 0, 0.35),
+            -5px 12px 15px -8px rgba(0, 0, 0, 0.25);
 
         h2 {
             font-size: 2rem;
-
-            @media (max-width: 800px) {
-                font-size: 1.6rem;
-            }
         }
 
         .exchange-content {
@@ -27,37 +24,45 @@
             align-items: center;
             gap: 2rem;
 
-            @media (max-width: 800px) {
-                flex-direction: column;
-                text-align: center;
-            }
-
             .col-1 {
                 max-width: 50%;
                 text-align: left;
                 font-weight: 500;
-
-                @media (max-width: 800px) {
-                    max-width: 50rem;
-                    width: 100%;
-                    text-align: center;
-                    font-size: 0.95rem;
-                }
             }
 
             .col-2 {
                 max-width: 50%;
 
-                @media (max-width: 800px) {
-                    max-width: 100%;
-                }
-
                 .exchange-img {
                     width: 15rem;
+                }
+            }
+        }
+    }
+}
 
-                    @media (max-width: 800px) {
-                        width: 10rem;
-                    }
+@media (max-width: 800px) {
+    .sec-exchange .container {
+        h2 {
+            font-size: 1.6rem;
+        }
+
+        .exchange-content {
+            flex-direction: column;
+            text-align: center;
+
+            .col-1 {
+                max-width: 50rem;
+                width: 100%;
+                text-align: center;
+                font-size: 0.95rem;
+            }
+
+            .col-2 {
+                max-width: 100%;
+
+                .exchange-img {
+                    width: 10rem;
                 }
             }
         }

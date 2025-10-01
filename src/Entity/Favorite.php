@@ -21,6 +21,14 @@ class Favorite
     #[ORM\JoinColumn(nullable: false)]
     private ?Soap $soap = null;
 
+    #[ORM\Column(type: 'datetime_immutable')]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,7 +42,6 @@ class Favorite
     public function setUser(?User $user): static
     {
         $this->user = $user;
-
         return $this;
     }
 
@@ -46,7 +53,11 @@ class Favorite
     public function setSoap(?Soap $soap): static
     {
         $this->soap = $soap;
-
         return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 }

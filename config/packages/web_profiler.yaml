@@ -1,6 +1,8 @@
 when@dev:
     web_profiler:
-        toolbar: true
+        # Désactiver temporairement pour tests SEO
+        toolbar: false
+        # Pour réactiver : toolbar: true
 
     framework:
         profiler:

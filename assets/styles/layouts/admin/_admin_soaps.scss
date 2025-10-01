@@ -50,13 +50,31 @@
             font-weight: 600;
         }
 
-        button {
-            background: #ff6b6b;
-            color: white;
+        .btn {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            margin: 0 0.2rem;
+            border-radius: 0.3rem;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 1rem;
             cursor: pointer;
+
+            &.btn-view {
+                background: var(--sky-mist);
+                color: var(--black);
+            }
+
+            &.btn-edit {
+                background: var(--sunny-cream);
+                color: var(--black);
+            }
+
+            &.btn-delete {
+                background: var(--blush-breeze);
+                color: var(--black);
+            }
         }
 
         a {

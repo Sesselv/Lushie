@@ -40,6 +40,40 @@ final class AdminController extends AbstractController
     }
     ////////////////////////////////////////////////////////
 
+    #[Route('/admin/soaps/{id}/edit', name: 'app_admin_soap_edit')]
+    public function edit(Soap $soap, Request $request, EntityManagerInterface $em): Response
+    {
+        $form = $this->createForm(SoapType::class, $soap);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $images = $form->get('images')->getData();
+            if ($images) {
+                foreach ($images as $image) {
+                    $newFilePath = uniqid() . '.' . $image->guessExtension();
+                    $image->move($this->getParameter('uploads_soaps_directory'), $newFilePath);
+
+                    $media = new Media();
+                    $media->setFilePath($newFilePath);
+                    $media->setSoap($soap);
+                    $media->setUser($this->getUser());
+                    $media->setCreatedAt(new \DateTimeImmutable("now"));
+                    $em->persist($media);
+                }
+            }
+
+            $em->flush();
+
+            return $this->redirectToRoute('app_admin_soaps');
+        }
+
+        return $this->render('admin/soap_edit.html.twig', [
+            'soap' => $soap,
+            'form' => $form->createView(),
+        ]);
+    }
+    ////////////////////////////////////////////////////////
+
     // #[Route('/admin/soaps/{id}', name: 'app_admin_soap_show')]
     // public function soapShow(Soap $soap): Response
     // {

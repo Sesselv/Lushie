@@ -10,12 +10,6 @@ footer.section {
         color: var(--white);
         max-width: none;
         padding: 1rem 5rem;
-        @media (max-width: 800px) {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 5rem;
-        }
 
         .col-1 {
             img {
@@ -26,18 +20,9 @@ footer.section {
         .col-2 {
             font-size: 1rem;
             text-align: right;
-            @media (max-width: 800px) {
-                display: flex;
-                text-align: center;
-                align-items: center;
-            }
 
             ul {
                 list-style: none;
-
-                @media (max-width: 800px) {
-                    padding: 0rem;
-                }
 
                 li {
                     a {
@@ -45,6 +30,25 @@ footer.section {
                         color: white;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    footer.section .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 5rem;
+
+        .col-2 {
+            display: flex;
+            text-align: center;
+            align-items: center;
+
+            ul {
+                padding: 0rem;
             }
         }
     }

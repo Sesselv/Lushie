@@ -213,6 +213,12 @@ final class UserController extends AbstractController
 
         // Traitement du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
+            // Vérifier si l'utilisateur est connecté
+            if (!$this->getUser()) {
+                // Rediriger vers la page de connexion
+                return $this->redirectToRoute('app_login');
+            }
+
             $comment->setUser($this->getUser());
             $comment->setArticle($article);
             $comment->setCreatedAt(new \DateTimeImmutable());
@@ -342,5 +348,24 @@ final class UserController extends AbstractController
     }
     //////////////////////////////////////////////////////////////////
 
+    #[Route('/user/delete-account', name: 'app_user_delete_account', methods: ['GET'])]
+    public function deleteAccount(EntityManagerInterface $em): Response
+    {
+        $user = $this->getUser();
 
+        if (!$user instanceof \App\Entity\User) {
+            throw $this->createAccessDeniedException('Vous devez être connecté.');
+        }
+
+        // Supprimer l'utilisateur (les relations en cascade supprimeront automatiquement ses articles, commentaires, etc.)
+        $em->remove($user);
+        $em->flush();
+
+        // Déconnecter l'utilisateur
+        $this->container->get('security.token_storage')->setToken(null);
+
+        $this->addFlash('success', 'Votre compte a été supprimé avec succès.');
+
+        return $this->redirectToRoute('app_home');
+    }
 }

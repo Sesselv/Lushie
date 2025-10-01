@@ -55,43 +55,22 @@ section,
     }
 }
 
-span.highlight-white {
+.highlight-white {
     background: rgba(255, 255, 255, 0.9);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.4);
 
     @media (max-width: 1200px) {
         padding: 0.15rem 0.3rem;
     }
 }
 
-span.highlight-sunny {
+.highlight-sunny {
     background: var(--sunny-cream);
-    padding: 0.2rem 0.5rem;
-    border-radius: 6px;
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
 
     @media (max-width: 800px) {
         padding: 0.15rem 0.4rem;
     }
 }
-
-// &.l-xsmall {
-//     max-width: 44rem;
-// }
-
-// &.l-small {
-//     max-width: 56rem;
-// }
-
-// &.l-medium {
-//     max-width: 64rem;
-// }
-
-// &.l-large {
-//     max-width: 75rem;
-// }
-
-// &.l-xlarge {
-//     max-width: 90rem;
-// }

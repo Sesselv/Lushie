@@ -22,6 +22,7 @@
                         href="{{
                             path('admin_delete_article', { id: article.id })
                         }}"
+                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');"
                         >Supprimer</a
                     >
                 </div>
@@ -49,6 +50,7 @@
                         href="{{
                             path('admin_delete_comment', { id: comment.id })
                         }}"
+                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');"
                         >Supprimer</a
                     >
                 </div>
@@ -57,12 +59,13 @@
         </ul>
         {% endif %}
 
-        <h2>Supprimer l’utilisateur</h2>
+        <h2>Supprimer l'utilisateur</h2>
         <form
             method="post"
             action="{{ path('admin_delete_user', { id: user.id }) }}"
+            onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer définitivement cet utilisateur ? Tous ses articles, commentaires et données seront perdus.');"
         >
-            <button type="submit">Supprimer l’utilisateur</button>
+            <button type="submit">Supprimer l'utilisateur</button>
         </form>
     </div>
 </section>

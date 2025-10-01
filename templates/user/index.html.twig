@@ -46,7 +46,7 @@
     <a href="{{ path('app_user_details', {userId: app.user.id, type: 'articles'}) }}">Mes articles</a>
     <a href="{{ path('app_user_details', {userId: app.user.id, type: 'commentaires'}) }}">Mes commentaires</a>
     <a href="{{ path('app_user_details', {userId: app.user.id, type: 'favorite'}) }}">Mes favoris</a>
-    <a href="" class="delete-account">Supprimer mon compte</a>
+    <a href="{{ path('app_user_delete_account') }}" class="delete-account" onclick="return confirm('Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.');">Supprimer mon compte</a>
     <a href="{{ path('app_logout') }}">Se déconnecter</a>
 </div>
 </section>

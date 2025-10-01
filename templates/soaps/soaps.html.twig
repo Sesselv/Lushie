@@ -1,9 +1,13 @@
-{% extends 'base.html.twig' %} {% block importmap %}
+{% extends 'base.html.twig' %} {% block title %}Tous les savons - Lushie{%
+endblock %} {% block meta_description %}Découvrez tous nos savons naturels avec
+leurs caractéristiques détaillées, notes de la communauté et ajoutez vos
+favoris.{% endblock %} {% block importmap %}
 {{ importmap(["app", "burger"]) }}
+
 {% endblock %} {% block body %}
 <section class="sec-soaps_page">
     <div class="container">
-        <h1>TOUT LES SAVONS</h1>
+        <h1 class="highlight-white">TOUS LES SAVONS</h1>
         <p class="intro">
             Un espace pour explorer différents savons, découvrir leurs
             caractéristiques, consulter les notes attribuées par la communauté
@@ -22,6 +26,8 @@
                         {% for image in soap.media %}
                         <img
                             src="{{ asset('uploads/soaps/' ~ image.filePath) }}"
+                            alt="Image du savon {{ soap.name }}"
+                            loading="lazy"
                         />
                         {% endfor %}
                     </div>

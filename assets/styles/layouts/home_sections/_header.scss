@@ -21,16 +21,6 @@ header.section {
             padding: 2rem;
             width: 100%;
             border-bottom: 0.2rem solid var(--black);
-            @media (max-width: 800px) {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-
-                &.active {
-                    display: flex;
-                }
-            }
-
             .nav-list {
                 display: flex;
                 flex-direction: row;
@@ -85,9 +75,11 @@ header.section {
     }
 }
 
-// Navigation responsive
 @media (max-width: 800px) {
     header.section .container .nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
         position: fixed;
         top: 0;
         left: 0;
@@ -97,6 +89,10 @@ header.section {
         z-index: 999;
         padding: 6rem 2rem 2rem 2rem;
         justify-content: flex-start;
+
+        &.active {
+            display: flex;
+        }
 
         .nav-list {
             flex-direction: column;

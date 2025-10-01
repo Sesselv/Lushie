@@ -4,6 +4,8 @@ framework:
         paths:
             - assets/
         missing_import_mode: strict
+        # Améliorer le cache des assets
+        public_prefix: /assets/
 
 when@prod:
     framework:

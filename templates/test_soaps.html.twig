@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} {% block title %}Test Savons{% endblock %} {%
+block body %}
+<div class="container">
+    <h1>Test des données des savons</h1>
+
+    {% for soap in soaps %}
+    <div style="border: 1px solid black; margin: 10px; padding: 10px">
+        <h3>{{ soap.name }}</h3>
+        <p><strong>Action:</strong> {{ soap.action ?? "NULL" }}</p>
+        <p><strong>Utilization:</strong> {{ soap.utilization ?? "NULL" }}</p>
+        <p><strong>SkinType:</strong> {{ soap.skinType ?? "NULL" }}</p>
+        <p><strong>Effect:</strong> {{ soap.effect ?? "NULL" }}</p>
+        <p><strong>Precautions:</strong> {{ soap.precautions ?? "NULL" }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -42,11 +42,15 @@
 
 <div class="comment-form">
     <h2>Commentaires</h2>
-
-    {{ form_start(form) }}
-    {{ form_widget(form.content, {'attr': {'class': 'comment-textarea', 'placeholder': ''}}) }}
-    <button type="submit">Envoyer</button>
-    {{ form_end(form) }}
+    
+    {% if app.user %}
+        {{ form_start(form) }}
+        {{ form_widget(form.content, {'attr': {'class': 'comment-textarea', 'placeholder': 'Écrivez votre commentaire...'}}) }}
+        <button type="submit">Envoyer</button>
+        {{ form_end(form) }}
+    {% else %}
+        <p>Vous devez être <a href="{{ path('app_login') }}">connecté</a> pour laisser un commentaire.</p>
+    {% endif %}
 </div>
 
 <div class="comment-section">

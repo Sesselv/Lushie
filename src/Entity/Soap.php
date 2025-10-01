@@ -34,7 +34,7 @@ class Soap
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $effect = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name: 'skin_type', length: 255, nullable: true)]
     private ?string $skinType = null;
 
     #[ORM\Column(length: 255, nullable: true)]

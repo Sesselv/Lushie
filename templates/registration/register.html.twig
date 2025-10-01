@@ -6,8 +6,14 @@
     <section class="sec-register">
         <div class="container">
             <div class="register-container">
-                <h1>INSCRIVEZ-VOUS POUR ACCEDER A PLUS DE FONCTIONNALITES !</h1>
+                <h1>
+                    <span class="highlight-sunny">INSCRIVEZ-VOUS</span> POUR
+                    ACCEDER A PLUS DE FONCTIONNALITES !
+                </h1>
                 {{ form_start(registrationForm, {'attr': {'class': 'form-register'
+
+
+
 
 
                 }}) }}
@@ -15,6 +21,9 @@
                 <div class="form-group">
                     {{ form_label(registrationForm.email) }}
                     {{ form_widget(registrationForm.email, {'attr': {'class': 'input-field'
+
+
+
 
 
                     }}) }}
@@ -28,9 +37,12 @@
                     {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'input-field'
 
 
+
+
+
                     }}) }}
                     <p>
-                        Votre mot de passe doit contenir 8 caractères minimum,
+                        Votre mot de passe doit contenir 12 caractères minimum,
                         un chiffre, une majuscule, une minuscule et un symbole.
                     </p>
                     <div class="error-message">
@@ -41,6 +53,9 @@
                 <div class="form-group">
                     {{ form_label(registrationForm.plainPassword.second) }}
                     {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'input-field'
+
+
+
 
 
                     }}) }}

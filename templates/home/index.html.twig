@@ -10,12 +10,18 @@
                 Un univers doux et coloré autour des savons.✨
             </h1>
             <ul class="hero-list">
-                <li class="hero-item">🧼 Des savons adaptés à chaque peau</li>
-                <li class="hero-item">💖 Compare facilement les savons</li>
                 <li class="hero-item">
-                    🧖‍♀️Teste ton profil avec notre quiz ludique
+                    🧼 Découvre des fiches sur de nombreux savons
                 </li>
-                <li class="hero-item">🪄Explore des articles inspirants</li>
+                <li class="hero-item">
+                    💖 Compare facilement les savons selon tes besoins
+                </li>
+                <li class="hero-item">
+                    🌿 Partage tes expériences avec la communauté
+                </li>
+                <li class="hero-item">
+                    🛍️ Explore des boutiques conseillées autour du soin bio
+                </li>
             </ul>
         </div>
         <div class="col-2">
@@ -100,12 +106,12 @@
             </span>
         </h2>
         <p class="intro">
-            une page dédiée aux avis pour mieux connaître chaque savon.
+            Une carte, un savon : explore, découvre et amuse-toi à les noter !
         </p>
 
         <div class="soap-cards">
             {% for soap in soaps %}
-            <div class="card">
+            <a href="{{ path('app_soap_show', { id: soap.id }) }}" class="card">
                 {% if soap.media|length > 0 %}
                 <img
                     src="{{ asset('uploads/soaps/' ~ soap.media[0].filePath) }}"
@@ -142,7 +148,7 @@
 
                 <h3>{{ soap.name }}</h3>
                 <p>{{ soap.description }}</p>
-            </div>
+            </a>
             {% endfor %}
         </div>
 
@@ -159,7 +165,7 @@
             <div class="col-1">
                 <p>
                     Partagez vos tests, vos impressions et vos petites
-                    trouvailles autour des savons !
+                    trouvailles autour des savons avec les autres passionés!
                 </p>
             </div>
             <div class="col-2">
@@ -170,15 +176,15 @@
                 />
             </div>
         </div>
-        <a href="{{ path('app_articles') }}" class="btn">Décourvir</a>
+        <a href="{{ path('app_articles') }}" class="btn">Découvrir</a>
     </div>
 </section>
 
 <section class="sec-shops">
     <div class="container">
         <h2>
-            Recherchez les boutiques qui vendent les meilleurs savons en France
-            !<br />👇
+            Recherchez les <span class="highlight-sunny">boutiques </span>qui
+            vendent les meilleurs savons en France !<br />👇
         </h2>
         <a href="{{ path('shops') }}" class="btn">Découvrir</a>
     </div>

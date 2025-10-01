@@ -7,17 +7,12 @@
             text-align: center;
         }
 
-        h2 {
-            @media (max-width: 800px) {
-                font-size: 1.8rem;
-            }
-        }
-
         .features-grid {
             display: flex;
             flex-direction: row;
             gap: 5rem;
             padding: 2rem;
+
             @media (max-width: 1200px) {
                 display: flex;
                 flex-direction: column;
@@ -39,15 +34,6 @@
                 box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.15),
                     0 1.5px 4px 0 rgba(0, 0, 0, 0.1);
 
-                @media (max-width: 800px) {
-                    width: 100%;
-                    max-width: 22rem;
-                    padding: 1rem 1.5rem;
-                    text-align: center;
-                    align-self: center;
-                    align-items: center;
-                }
-
                 .feature-icon {
                     display: inline-flex;
                     align-items: center;
@@ -59,22 +45,12 @@
                     border-radius: 50%;
                     border: 1px solid var(--black);
                     margin-bottom: 1rem;
-
-                    @media (max-width: 800px) {
-                        width: 4rem;
-                        height: 4rem;
-                        font-size: 2.5rem;
-                    }
                 }
 
                 h2 {
                     font-size: 1.5rem;
                     text-align: left;
                     margin: 0;
-
-                    @media (max-width: 800px) {
-                        font-size: 1.3rem;
-                    }
                 }
 
                 .toggle-btn {
@@ -88,10 +64,6 @@
                     cursor: pointer;
                     color: var(--black);
                     line-height: 1;
-
-                    @media (max-width: 800px) {
-                        font-size: 1.5rem;
-                    }
                 }
 
                 .feature-content {
@@ -115,6 +87,37 @@
                 &.exchange {
                     background-color: var(--blush-breeze);
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .sec-features .container {
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        .features-grid .feature-box {
+            width: 100%;
+            max-width: 22rem;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            align-self: center;
+            align-items: center;
+
+            .feature-icon {
+                width: 4rem;
+                height: 4rem;
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .toggle-btn {
+                font-size: 1.5rem;
             }
         }
     }

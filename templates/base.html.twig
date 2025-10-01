@@ -4,14 +4,17 @@
         <meta charset="UTF-8" />
         <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
         <meta
             name="description"
-            content="{% block meta_description %}Découvrez Lushie...{% endblock %}"
+            content="{% block meta_description %}Découvrez Lushie, votre univers doux et coloré autour des savons. Comparez, découvrez et partagez vos expériences avec des savons adaptés à chaque peau.{% endblock %}"
         />
         <meta name="csrf-token" content="{{ csrf_token('authenticate') }}" />
 
         {% block javascripts %}
-        {{ importmap("app") }}
+        {{
+            importmap("app")
+        }}
         {% endblock %}
 
         <script>

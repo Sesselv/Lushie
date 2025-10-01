@@ -28,10 +28,6 @@
             width: 100%;
             gap: 2rem;
 
-            @media (max-width: 800px) {
-                max-width: 100%;
-            }
-
             h1 {
                 font-size: 2.5rem;
                 max-width: 32.5rem;
@@ -40,16 +36,6 @@
 
                 span.highlight-white {
                     line-height: 1;
-                }
-
-                @media (max-width: 800px) {
-                    font-size: 2rem;
-                    max-width: 90%;
-                }
-
-                @media (max-width: 800px) {
-                    font-size: 1.5rem;
-                    max-width: 100%;
                 }
 
                 span {
@@ -65,10 +51,6 @@
                     list-style: none;
                     padding: 0.5rem 0;
                     font-size: 1rem;
-
-                    @media (max-width: 800px) {
-                        font-size: 0.9rem;
-                    }
                 }
             }
         }
@@ -79,11 +61,6 @@
             display: flex;
             justify-content: center;
 
-            @media (max-width: 800px) {
-                max-width: 80%;
-                margin-top: 2rem;
-            }
-
             .soaps-img {
                 max-width: 50rem;
                 width: 100%;
@@ -93,11 +70,6 @@
 
                 @media (max-width: 1200px) {
                     max-width: 30rem;
-                }
-
-                @media (max-width: 800px) {
-                    max-width: 20rem;
-                    rotate: 0deg;
                 }
             }
         }
@@ -136,14 +108,6 @@
                 width: 0.0625rem;
                 height: 100%;
                 background: var(--white);
-                @media (max-width: 800px) {
-                    right: -1rem;
-                }
-            }
-
-            @media (max-width: 800px) {
-                font-size: 0.9rem;
-                margin: 0 1rem;
             }
         }
     }
@@ -154,6 +118,42 @@
         }
         100% {
             transform: translateX(-50%);
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .sec-hero .container {
+        .col-1 {
+            max-width: 100%;
+
+            h1 {
+                font-size: 1.5rem;
+                max-width: 100%;
+            }
+
+            .hero-list .hero-item {
+                font-size: 0.9rem;
+            }
+        }
+
+        .col-2 {
+            max-width: 80%;
+            margin-top: 2rem;
+
+            .soaps-img {
+                max-width: 20rem;
+                rotate: 0deg;
+            }
+        }
+    }
+
+    .sec-hero .animated-bar span {
+        font-size: 0.9rem;
+        margin: 0 1rem;
+
+        &::after {
+            right: -1rem;
         }
     }
 }
